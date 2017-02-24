@@ -1,0 +1,70 @@
+<div class="media review review-{{review.review_id}}">
+    {% if setting.review_thumb.rating_display %}
+    <div class="rating rating-{{review.rating}}">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+    </div>
+    {% endif %}
+
+    {% if setting.review_thumb.image_display %}
+    <div class="media-left">
+        <div class="image">
+            <img class="media-object" src="{{review.image}}" alt="{{review.author}}"  style="max-width:{{setting.review_thumb.image_width}}px">
+            {% if provider %}
+                {% for provider in review.provider %}
+                <div id="d_social_login">
+                    <a id="dsl_{{provider.id}}_button" class="dsl-button dsl-button-icons"><span class="l-side"><span class="dsl-icon {{provider.icon}}"></span></span></a>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="media-body">
+        <div class="btn-group btn-group-xs pull-right" role="group" aria-label="Extra-small button group">
+            <button type="button" class="btn btn-default reply-to" data-review-id="{{review_id}}" data-author="{{author}}" ><i class="fa fa-reply"></i> {{text_reply_to}}</button>
+            {% if delete %}
+                <button type="button" class="btn btn-default delete"  data-review-id="{{review_id}}" ><i class="fa fa-trash"></i> {{text_delete}}</button>
+            {% endif %}
+            {% if edit %}
+                <a type="button" class="btn btn-default edit" href="{{edit}}" target="_blank"><i class="fa fa-pencil"></i> {{text_edit}}</a>
+            {% endif %}
+        </div>
+
+        <div class="media-heading">
+            <div class="h4">{{review.author}}</div>
+            {% if setting.review_thumb.date_display %}
+                <span class="date-added">{{review.date_added}}</span>
+            {% endif %}
+        </div>
+        <p class="description">{{review.description}}</p>
+        {% if setting.review_thumb.image_user_display %}
+            {% if review.images %}
+                <div class="images">
+
+                    {% for image in review.images %}
+                        {% if (image.thumb or image.popup) %}
+                           {% if image.thumb %}
+                                {% if image.popup %}
+                                    <a class="thumbnail {{image.popup_name}}" href="{{image.popup}}" title="{{image.heading_title}}">
+                                        <img src="{{image.thumb}}" title="{{image.heading_title}}" alt="{{image.heading_title}}" />
+                                    </a>
+                                {% else %}
+                                    <img src="{{image.thumb}}" title="{{image.heading_title}}" alt="{{image.heading_title}}" />
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="replies">
+        {% for review in replies %}
+            {% include template('d_blog_module/review_thumb') with review %}
+        {% endfor %}
+        </div>
+    </div>
+</div>

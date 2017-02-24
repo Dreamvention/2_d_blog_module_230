@@ -1,0 +1,108 @@
+{
+    "codename": "d_blog_module",
+    "version": "2.0.1",
+    "name": "Blog module",
+    "description": "A blog module based on twig. Huge functionality packed in one great solution.",
+    "index": "module/d_blog_module",
+    "readme": "system/mbooth/readme/d_blog_module.md",
+    "author": {
+        "name": "Dreamvention",
+        "email": "info@dreamvention.com",
+        "url": "https://dreamvention.com/"
+    },
+    "opencart_version": [
+        "2.3.0.0",
+        "2.3.0.1",
+        "2.3.0.2"
+    ],
+    "mbooth_version": "^4.0.0",
+    "type": "module",
+    "license": {
+        "type": "commercial",
+        "url": "https://shopunity.net/licenses/free"
+    },
+    "install": {
+        "url": "extension/module/install&extension=d_blog_module"
+    },
+    "uninstall": {
+        "url": "extension/module/uninstall&extension=d_blog_module"
+    },
+    "support": {
+        "email": "support@dreamvention.com",
+        "url": "https://shopunity.net/"
+    },
+    "required": {
+        "d_shopunity": ">= 3.0.0",
+        "d_event_manager": ">=1.0.0",
+        "d_twig_manager": ">= 1.0.0",
+        "d_bootstrap_rating": ">= 1.0.0",
+        "d_fileinput": ">= 1.0.0",
+        "d_bootstrap_bootbox": ">= 4.4.0",
+        "d_bootstrap_switch": ">= 3.3.3",
+        "d_tinysort": ">= 2.3.6",
+        "d_rubaxa_sortable": ">= 1.4.0",
+        "d_bootstrap_colorpicker": ">= 2.5.0",
+        "d_twig_partial": ">=1.0.0"
+    },
+    "files": [
+        "system/mbooth/extension/d_blog_module.json",
+        "system/config/d_blog_module.php",
+        "admin/d_blog_module.sql",
+
+        "admin/controller/extension/module/d_blog_module.php",
+        "admin/controller/event/d_blog_module.php",
+        "admin/language/en-gb/event/d_blog_module.php",
+        "admin/model/extension/module/d_blog_module.php",
+        "admin/language/en-gb/extension/module/d_blog_module.php",
+        "admin/view/template/extension/module/d_blog_module.tpl",
+
+        "catalog/model/extension/module/d_blog_module.php",
+        "catalog/controller/event/d_blog_module.php",
+        "catalog/language/en-gb/event/d_blog_module.php",
+        "image/catalog/d_blog_module/no_profile_image.png",
+        "image/catalog/d_blog_module/review/index.html",
+
+        "system/config/d_visual_designer_route/edit_blog_module_category.php",
+        "system/config/d_visual_designer_route/add_blog_module_category.php",
+        "system/config/d_visual_designer_route/edit_blog_module_post.php",
+        "system/config/d_visual_designer_route/add_blog_module_post.php",
+        "system/config/d_visual_designer_route/edit_blog_module_author.php",
+        "system/config/d_visual_designer_route/add_blog_module_author.php",
+        
+        "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.scss",
+        "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css.map",
+        "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css",
+        "catalog/view/theme/default/stylesheet/d_blog_module/bootstrap.scss",
+        "catalog/view/theme/default/stylesheet/d_blog_module/bootstrap.css.map",
+        "catalog/view/theme/default/stylesheet/d_blog_module/bootstrap.css",
+        "catalog/view/theme/default/stylesheet/d_blog_module/theme/default.scss",
+        "catalog/view/theme/default/stylesheet/d_blog_module/theme/default.css.map",
+        "catalog/view/theme/default/stylesheet/d_blog_module/theme/default.css"
+    ],
+    "dirs":[
+        "admin/controller/d_blog_module",
+        "admin/model/d_blog_module",
+        "admin/language/en-gb/d_blog_module",
+        "admin/view/template/d_blog_module",
+        "admin/view/image/d_blog_module",
+
+        "catalog/controller/d_blog_module",
+        "catalog/model/d_blog_module",
+        "catalog/language/en-gb/d_blog_module",
+        "catalog/view/theme/default/template/d_blog_module",
+        "catalog/view/theme/default/javascript/d_blog_module",
+
+        "image/catalog/d_blog_module/category",
+        "image/catalog/d_blog_module/post"
+    ],
+    "changelog": [
+        {
+            "version":"2.0.1",
+            "change": "compatibility with visual designer"
+        },
+        {
+            "version":"2.0.0",
+            "change": ""
+        }
+    ]
+}

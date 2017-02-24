@@ -1,0 +1,192 @@
+{% if reviews %}
+<div class="bm-reviews">
+    <div class="h2"><span>{{text_reviews}}</span></div>
+    <div id="reviews">
+        {% for review in reviews %}
+            {% include template('d_blog_module/review_thumb') with review %}
+        {% endfor %}
+        <div class="row bm-pagination">
+            <div class="col-sm-6 text-left">{{pagination}}</div>
+            <div class="col-sm-6 text-right">{{results}}</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<form id="form_review" class="form-horizontal form-review">
+    <div class="h2 text-write"><span>{{text_write}}</span></div>
+    <div class="h2 text-reply hidden"><span>{{text_reply}}</span></div>
+    <div id="review_notification"></div>
+    {% if review_write %}
+
+        <div class="form-group">
+            <div id="guest_info" class="{% if customer %}hidden{% endif %}">
+                <div class="col-sm-4 required" id="input_author">
+                    <label class="control-label" for="review_author">{{entry_author}}</label>
+                    <input type="text" name="author" value="" id="review_author" class="form-control" />
+                </div>
+                <div class="col-sm-4 required" id="input_email">
+                    <label class="control-label" for="review_email">{{entry_email}}</label>
+                    <input type="text" name="email" value="" id="review_email" class="form-control" />
+                </div>
+            </div>
+            {% if setting.post.rating_display %}
+            <div class="col-sm-4 required input-rating" id="input_rating">
+                <label class="control-label">{{entry_rating}}</label>
+                <div class="rating">
+                    <input type="hidden" id="review_rating" name="rating" data-start="0" data-stop="5" data-filled="fa fa-star fa-stack-2x, fa fa-star-o fa-stack-2x" data-empty="fa fa-star-o fa-2x" >
+                </div>
+            </div>
+            {% endif %}
+
+
+            <div class="col-sm-4 required hidden" id="input_cancel_reply">
+                <label class="control-label">{{entry_reply_to}} </label>
+                <div class="input-group">
+                  <div class="input-group-addon name"></div>
+                  <span class="input-group-btn">
+                    <a class="btn btn-danger cancel-reply"><i class="fa fa-close"></i></a>
+                  </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <div class="col-sm-12">
+                <label class="control-label" for="input-review">{{entry_review}}</label>
+                <textarea name="description" rows="5" id="input-review" class="form-control"></textarea>
+                <div class="help-block">{{text_note}}</div>
+            </div>
+        </div>
+        {# <input type="hidden" name="mode" value="{{mode}}"/> #}
+        {% if setting.review.image_user_display %}
+        <div class="form-group required">
+            <div class="col-sm-12">
+                <input id="fileupload" name="fileupload[]" type="file" multiple class="file-loading" accept="image/*">
+            </div>
+        </div>
+        {% endif %}
+        {% if captcha %}
+            <div id="captcha">
+                {{captcha}}
+            </div>
+        {% endif %}
+        <div class="form-group">
+            <div class="col-xs-8">
+                {% if customer %}
+                    {% if setting.review.customer_display %}
+                    <div id="customer_info" class="customer-info clearfix">
+                        <a href="#" class="image">
+                            <img class="img-responsive" src="{{customer_image}}" alt="{{author}}">
+                        </a>
+                        <a href="#" class="name">
+                            {{customer_name}}
+                        </a>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    {{d_social_login}}
+                {% endif %}
+            </div>
+            <div class="col-xs-4">
+                <div class="buttons clearfix">
+                    <div class="pull-right">
+                        <button type="button" id="button_review" data-loading-text="{{text_loading}}" class="btn btn-primary">{{button_continue}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if select_from %}
+        <div class="form-group">
+            <div class="col-sm-4 required" id="select_account">
+                <label class="control-label " for="input-review">{{entry_mode}}</label>
+                <div class="input-group btn-group" data-toggle="buttons">
+
+                    <label class="btn btn-primary {% if (from == 'user') %}active{% endif %} {% if not select_from_user %}hidden{% endif %}">
+                        <input type="radio" name="from" {% if (from == 'user') %}checked="checked"{% endif %} value="user"/>
+                           {{text_author}}
+                    </label>
+                    <label class="btn btn-primary {% if (from == 'customer') %}active{% endif %} {% if not select_from_customer %}hidden{% endif %}">
+                        <input type="radio" name="from" {% if (from == 'customer') %}checked="checked"{% endif %} value="customer"/>
+                           {{text_customer}}
+                    </label>
+                    <label class="btn btn-primary {% if from == 'guest' %}active{% endif %} ">
+                        <input type="radio" name="from" {% if (from == 'guest') %}checked="checked"{% endif %} value="guest"/>
+                           {{text_guest}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="hidden">{{d_social_login}}</div>
+    {% else %}
+        <div class="form-group"><div class="col-md-12"><p>{{text_login}}</p><p>{{d_social_login}}</p></div></div>
+    {% endif %}
+    <input id="post_id" type="hidden" name="post_id" type="text" value="{{post_id}}">
+    <input id="reply_to_review_id" type="hidden" name="reply_to_review_id" type="text">
+</form>
+
+<script>
+$(function(){
+    var imageCount=0;
+    bm.review = $.extend(true, {}, Review);
+    bm.review.init({
+        form: $("#form_review"),
+        reviews: $("#reviews")
+    })
+
+    $(document).on('click', '#button_review', function() {
+        bm.review.write();
+    });
+
+    $(document).on('click', '.review .reply-to', function() {
+        bm.review.reply($(this).data('review-id'), $(this).data('author'));
+    });
+
+    $(document).on('click', '.cancel-reply', function(e) {
+        bm.review.cancelReply();
+        e.preventDefault();
+    });
+    $(document).on('click', '.review .delete', function(e) {
+        bm.review.delete($(this).data('review-id'));
+    });
+    $(document).on('change', 'input[name=from]', function(e) {
+        bm.review.mode();
+    });    
+
+    var countImage = 0;
+    $("#fileupload").fileinput({
+        uploadUrl: 'index.php?route=d_blog_module/review/uploadFile',
+        allowedFileExtensions: ["jpg", "png", "gif"],
+        maxImageWidth: {{ setting.review.image_upload_width}},
+        maxImageHeight: {{ setting.review.image_upload_height}},
+        maxFileCount: {{ setting.review.image_limit}},
+    }).on('filesuccessremove', function(event, id) {
+        var code =  $('#'+id+' > input[type=hidden]').val();
+        $.ajax({
+            url: 'index.php?route=d_blog_module/review/deleteFile',
+            type: 'post',
+            data: 'code='+code,
+            dataType: 'json',
+            success: function() {
+                if(json['success'])
+                {
+                    console.log(json['success']);
+                }
+            },
+        });
+    }).on('fileuploaded', function(event, data, previewId, index) {
+        var d = new Date();
+        var n = d.getTime();
+        var html = '<input type="hidden" name="images['+countImage+']" value="'+data.response.code+'">';
+        $('#'+previewId).append(html);
+        countImage++;
+    });
+
+    $('.review [class^=\'thumbnail\']').magnificPopup({
+        type:'image',
+        gallery: {
+            enabled:true
+        }
+    });
+})
+</script>

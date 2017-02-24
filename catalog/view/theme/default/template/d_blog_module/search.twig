@@ -1,0 +1,39 @@
+{{header}}
+<style>
+    {{custom_style}}
+</style>
+{% include template('partial/d_breadcrumb') %}
+    {% include template('partial/d_layout_open') %}
+        <div class="bm">
+            <div class="bm-search-info clearfix">
+                 <h1 class="h1 title">{{heading_title}}</h1>
+            </div>
+            {% if posts %}
+                <div class="bm-posts">
+                    <div class="row">
+                        {% for post in posts %}
+                            {% if post.row %}
+                                </div><div class="row">
+                            {% endif %}
+                            <div class="col-md-{{post.col}}">
+                                {% include template('d_blog_module/post_thumb') with post %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="bm-pagination">
+                        <div class="row">
+                            <div class="col-sm-6 text-left">{{pagination}}</div>
+                            <div class="col-sm-6 text-right">{{results}}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if not posts %}
+                <p class="bm-empty">{{text_empty}}</p>
+                <div class="buttons">
+                    <div class="pull-right"><a href="{{continue}}" class="btn btn-primary">{{button_continue}}</a></div>
+                </div>
+            {% endif %}
+        </div>
+    {% include template('partial/d_layout_close') %}
+{{footer}}

@@ -1,0 +1,148 @@
+{{header}}
+<style>
+    {{custom_style}}
+</style>
+{% include template('partial/d_breadcrumb') %}
+    {% include template('partial/d_layout_open') %}
+        <article class="bm">
+            <div class="heading bm-post-info clearfix">
+                {% if edit %}<div class="btn-group btn-group-xs btn-edit" ><a class="btn btn-default " href="{{edit}}" target="_blank"><i class="fa fa-pencil"></i> {{text_edit}}</a></div>{% endif %}
+                {% if setting.post.category_label_display %}
+                    <ul class="category list-unstyled">
+                    {% for category in categories %}
+                        <li><a href="{{category.href}}">{{category.title}}</a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                <h1 class="h1 title">{{heading_title}}</h1>
+                <span class="title-divider"></span>
+                <div class="title-information">
+                    {% if setting.post.rating_display %}
+                    <div class="rating rating-{{rating}}">
+                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                    </div>
+                    {% endif %}
+                    <div class="details">
+                        {% if setting.post.author_display %}
+                            {{text_posted_by}}
+                            <a href="{{author_link}}" rel="bookmark">
+                                {{author}}
+                            </a>
+                        {% endif %}
+                        {% if setting.post.date_display %}
+                            {{text_on}}
+                            <a href="{{date_published_link}}" rel="bookmark">
+                                <time class="entry-date published" datetime="{{date_published_utc}}">{{date_published}}</time>
+                                <time class="updated hidden" datetime="{{date_modified_utc}}">{{date_modified}}</time>
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div>
+                {% if (thumb or popup) %}
+                    <div class="image">
+                    {% if thumb %}
+                        {% if popup %}
+                        <a class="popup" href="{{popup}}" title="{{heading_title}}">
+                            <img src="{{thumb}}" title="{{image_title}}" alt="{{image_alt}}" class="img-responsive" />
+                        </a>
+                        {% else %}
+                             <img src="{{thumb}}" title="{{image_title}}" alt="{{image_alt}}" class="img-responsive" />
+                        {% endif %}
+                    {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="content bm-post-content">
+                <div id="description" class="description">{{description}}</div>
+                {% if post_videos %}
+                    <div class="bm-videos">
+                        {% for post_video in post_videos %}
+                            <div class="bm-video">
+                                <h2>{{post_video.text}}</h2>
+                                <div style="text-align: center;">
+                                    {{post_video.code}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if tags %}
+                <div class="tag">
+                    <span class="tag-title">{{text_tags}}</span>
+                    {% for tag in tags %}
+                        <a href="{{tag.href}}">{{tag.text}}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+
+                {% if setting.post.nav_display and (prev_post or next_post) %}
+                <div class="row post-nav">
+                    <div class="col-md-6 post-nav-left">
+                        {% if prev_post %}
+                            <a href="{{prev_post.href}}" class="media">
+                                <div class="media-left">
+                                     <img class="media-object"  src="{{prev_post.thumb}}" data-holder-rendered="true">
+                                </div>
+                                <div class="media-body">
+                                    <div class="h4 media-heading">{{prev_post.text}}</div>
+                                    <div class="media-body">{{prev_post.short_description}}</div>
+                                </div>
+                            </a>
+                            {# <a class="btn btn-default" href="{{prev_post.href}}">⟵ {{prev_post.text}}</a> #}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 post-nav-right">
+                        {% if next_post %}
+                            <a href="{{next_post.href}}" class="media">
+                                <div class="media-body">
+                                    <div class="h4 media-heading">{{next_post.text}}</div>
+                                    <div class="media-body">{{next_post.short_description}}</div>
+                                </div>
+                                <div class="media-right">
+                                     <img class="media-object" src="{{next_post.thumb}}" data-holder-rendered="true">
+                                </div>
+                            </a>
+                            {# <a class="btn btn-default pull-right" href="{{next_post.href}}">{{next_post.text}} ⟶</a> #}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+     
+
+                {% if setting.post.author_display %}
+                <div class="bm-author">
+                    <div class="author-image">
+                        <a href="{{author_link}}"><img src="{{author_image}}" class="img-responsive" /></a>
+                    </div>
+                    <div class="author-body">
+                        <a href="{{author_link}}"><div class="h4 author-name">{{author_name}}</div></a>
+                        <div class="author-description">{{author_description}}</div>
+                        <a href="{{author_link}}" class="read-more">{{text_read_more}}</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if review_display %}
+                    {{review}}
+                {% endif %}
+            </div>
+        </article>
+        <script>
+        $(function(){
+            $('.popup').magnificPopup({
+                type:'image',
+                gallery: {
+                    enabled:true
+                }
+            });
+        })
+        </script>
+    {% include template('partial/d_layout_close') %}
+{{footer}}
