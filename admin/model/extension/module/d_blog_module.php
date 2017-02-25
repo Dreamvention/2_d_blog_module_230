@@ -380,6 +380,11 @@ class ModelExtensionModuleDBlogModule extends Model {
         $this->db->query(" INSERT IGNORE INTO `" . DB_PREFIX . "layout` (`layout_id`, `name`) VALUES ('102', 'Blog search')");
         $this->db->query(" INSERT IGNORE INTO `" . DB_PREFIX . "layout` (`layout_id`, `name`) VALUES ('103', 'Blog author')");
 
+        $this->db->query(" DELETE FROM `" . DB_PREFIX . "layout_route` WHERE route = 'd_blog_module/post'");
+        $this->db->query(" DELETE FROM `" . DB_PREFIX . "layout_route` WHERE route = 'd_blog_module/category'");
+        $this->db->query(" DELETE FROM `" . DB_PREFIX . "layout_route` WHERE route = 'd_blog_module/search'");
+        $this->db->query(" DELETE FROM `" . DB_PREFIX . "layout_route` WHERE route = 'd_blog_module/author'");
+
         $this->db->query(" INSERT IGNORE INTO `" . DB_PREFIX . "layout_route` ( `layout_id`, `store_id`, `route`) VALUES ( '100', '0', 'd_blog_module/post')");
         $this->db->query(" INSERT IGNORE INTO `" . DB_PREFIX . "layout_route` ( `layout_id`, `store_id`, `route`) VALUES ( '101', '0', 'd_blog_module/category')");
         $this->db->query(" INSERT IGNORE INTO `" . DB_PREFIX . "layout_route` ( `layout_id`, `store_id`, `route`) VALUES ( '102', '0', 'd_blog_module/search')");
