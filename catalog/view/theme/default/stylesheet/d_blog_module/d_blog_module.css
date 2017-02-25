@@ -5,13 +5,6 @@
   /*review*/
   /*fix*/
   /*elements*/ }
-  .bm .image > #d_social_login{
-  	margin-top: -20px;
-  }
-  .bm .image > #d_social_login > a {
-  	border-radius: 50%;
-  }
-
   .bm .bm-category-info,
   .bm .bm-author-info {
     padding-bottom: 20px;
@@ -105,6 +98,8 @@
     display: inline-block;
     vertical-align: middle;
     font-size: 14px; }
+  .bm .form-review .file-drop-zone-title {
+    padding: 30px 10px; }
   .bm .fa-2x,
   .bm .fa-stack-2x {
     font-size: 2em !important; }
