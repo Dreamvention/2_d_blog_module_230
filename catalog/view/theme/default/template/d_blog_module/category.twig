@@ -23,7 +23,7 @@
                 <div class="row">
                     {% for category in categories %}
                     <div class="col-sm-{{category.col}} col-xs-4">
-                        <a class="item-cateogry" href="{{href}}">
+                        <a class="item-cateogry" href="{{category.href}}">
                             {% if setting.category.sub_category_image %}
                                 <div class="image"><img src="{{category.thumb}}" alt="{{category.title}}" title="{{category.title}}" /></div>
                             {% endif %}
