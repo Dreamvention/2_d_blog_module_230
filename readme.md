@@ -1,6 +1,6 @@
 #d_blog_module
 
-The blog framework for Opencart. It is Opensourse and avalible for anyone to include into thier theme of project. 
+The blog framework for Opencart 2.x. It is Open sourse and avalible for anyone to include into thier theme of project. 
 
 It has the most important features for a blog:
 1. Posts
@@ -26,3 +26,9 @@ You can also extend the functionality by adding
 8. If you are running an opencart store below 2.3.0.0 - you will need to activate the Event Compatibility option in Event Manager -> Settings.
 9. Then Go to Twig Manager -> Tab Settings and activate Twig support.
 10. Then go to Blog Module and switch the status ON.
+
+###Requirments
+d_blog_module requires TWIG templating engine to be installed and supported by Opencart. You can add Twig support with the [d_twig_manager](https://github.com/Dreamvention/2_d_twig_manager).
+
+##Support
+Please create a Issue in this git repository and we will get back to you.
