@@ -2,7 +2,7 @@
     "codename": "d_blog_module",
     "version": "2.1.0",
     "name": "Blog module",
-    "description": "A blog module based on twig. Huge functionality packed in one great solution.",
+    "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "module/d_blog_module",
     "readme": "system/mbooth/readme/d_blog_module.md",
     "author": {
