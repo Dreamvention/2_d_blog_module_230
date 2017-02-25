@@ -27,8 +27,8 @@ You can also extend the functionality by adding
 9. Then Go to Twig Manager -> Tab Settings and activate Twig support.
 10. Then go to Blog Module and switch the status ON.
 
-###Requirments
-d_blog_module requires TWIG templating engine to be installed and supported by Opencart. You can add Twig support with the [d_twig_manager](https://github.com/Dreamvention/2_d_twig_manager).
-
+###Requirements
+1. d_blog_module requires TWIG templating engine to be installed and supported by Opencart. You can add Twig support with the [d_twig_manager](https://github.com/Dreamvention/2_d_twig_manager).
+2. It also requires events to be avalible. Opencart 2.3.0.x and above have support for events, yet if you want to use the blog below 2.3.x - you will need to install the [d_event_manager](https://github.com/Dreamvention/2_d_event_manager) (d_twig_manager also requires it). 
 ##Support
 Please create a Issue in this git repository and we will get back to you.
