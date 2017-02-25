@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.0.1",
+    "version": "2.1.0",
     "name": "Blog module",
     "description": "A blog module based on twig. Huge functionality packed in one great solution.",
     "index": "module/d_blog_module",
@@ -11,8 +11,6 @@
         "url": "https://dreamvention.com/"
     },
     "opencart_version": [
-        "2.3.0.0",
-        "2.3.0.1",
         "2.3.0.2"
     ],
     "mbooth_version": "^4.0.0",
@@ -96,6 +94,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.1.0",
+            "change": "twig support. separation of concerns."
+        },
         {
             "version":"2.0.1",
             "change": "compatibility with visual designer"
