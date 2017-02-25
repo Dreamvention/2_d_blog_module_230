@@ -65,10 +65,9 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         if (($this->request->server['REQUEST_METHOD'] == 'POST') ) {
 
             $this->model_setting_setting->editSetting($this->codename, $this->request->post, $this->store_id);
+            $this->uninstallEvents();
             if(!empty($this->request->post[$this->codename.'_status'])){
                 $this->installEvents();
-            }else{
-                $this->uninstallEvents();
             }
 
             $this->session->data['success'] = $this->language->get('text_success');
