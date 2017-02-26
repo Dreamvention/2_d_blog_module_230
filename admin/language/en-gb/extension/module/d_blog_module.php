@@ -23,7 +23,6 @@ $_['tab_post']                                  = 'Post';
 $_['tab_review']                                = 'Review';
 $_['tab_review_thumb']                          = 'Review thumb';
 $_['tab_author']                                = 'Author';
-$_['tab_seo']                                   = 'SEO';
 $_['tab_export']                                = 'Export';
 $_['tab_import']                                = 'Import';
 $_['text_upload']                               = 'File imported successfully';
@@ -159,7 +158,7 @@ $_['error_failed']                              = 'Oops! We could not connect to
 //support
 $_['text_support']                              = 'Support';
 $_['entry_support']                             = 'Support';
-$_['button_support_email']                      = 'Email to support';
+$_['button_support']                      		= 'New ticket';
 
 //instruction
 $_['tab_instruction']                           = 'Instructions';

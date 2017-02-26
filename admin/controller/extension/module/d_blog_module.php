@@ -146,7 +146,6 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['store_id'] = $this->store_id;
         $data['stores'] = $this->model_d_shopunity_setting->getStores();
         $data['config'] = $this->config_file;
-        $data['support_email'] = $this->extension['support']['email'];
         $data['version'] = $this->extension['version'];
         $data['token'] =  $this->session->data['token'];
 
@@ -169,9 +168,11 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['text_menu_review'] = $this->language->get('text_menu_review');
         $data['text_menu_author'] = $this->language->get('text_menu_author');
 
+        $data['tab_support'] = $this->language->get('tab_support');
         $data['text_support'] = $this->language->get('text_support');
         $data['entry_support'] = $this->language->get('entry_support');
-        $data['button_support_email'] = $this->language->get('button_support_email');
+        $data['button_support'] = $this->language->get('button_support');
+        $data['support_url'] = $this->extension['support']['url'];
 
         // Button
         $data['button_save'] = $this->language->get('button_save');
@@ -337,8 +338,8 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $twig_support = (file_exists(DIR_SYSTEM.'mbooth/extension/d_twig_manager.json')) && (file_exists(DIR_SYSTEM.'mbooth/extension/d_event_manager.json'));
         $data['twig_support'] = false;
         if($twig_support){
-            $this->load->model('module/d_event_manager');
-            $data['twig_support'] = $this->model_module_d_event_manager->getEvents(array('filter_code' => 'd_twig_manager'));
+            $this->load->model('d_shopunity/ocmod');
+            $data['twig_support'] = $this->model_d_shopunity_ocmod->getModificationByName('d_twig_manager');
         }
 
         $data['header'] = $this->load->controller('common/header');

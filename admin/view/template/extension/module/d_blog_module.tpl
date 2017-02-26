@@ -167,11 +167,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="button_support_email"><?php echo $entry_support; ?></label>
                                     <div class="col-sm-2">
-                                            <a href="mailto:<?php echo $support_email; ?>?Subject=Request Support: <?php echo $heading_title; ?>&body=Shop: <?php echo HTTP_SERVER; ?>" id="button_support_email" class="btn btn-primary btn-block"><i class="fa fa-support"></i> <?php echo $button_support_email; ?></a>
-
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <label class="form-control-static"><?php echo $support_email; ?></label>
+                                        <a href="<?php echo $support_url; ?>" class="btn btn-primary btn-block" target="_blank"><i class="fa fa-support"></i> <?php echo $button_support; ?></a>
                                     </div>
                                 </div><!-- //support_email -->
                             </div>
