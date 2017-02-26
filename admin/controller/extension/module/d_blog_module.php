@@ -307,7 +307,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         //demo
         $data['demos'] = $this->model_extension_module_d_blog_module->getDemos();
         foreach($data['demos'] as $key => $demo){
-            $data['demos'][$key]['install'] = str_replace('&amp;', '&', $this->url->link($this->route.'/installDemoData', 'token=' . $this->session->data['token'].'&config='.$key, 'SSL'));
+            $data['demos'][$key]['install'] = str_replace('&amp;', '&', $this->url->link($this->route.'/installDemoData', 'token=' . $this->session->data['token'].'&config='.$demo['config'], 'SSL'));
         }
 
         $data['cols']  = array(1,2,3,4,6);

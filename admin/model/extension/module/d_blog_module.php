@@ -436,10 +436,11 @@ class ModelExtensionModuleDBlogModule extends Model {
     public function getDemos(){
         $files = glob(DIR_CONFIG . 'd_blog_module*.php', GLOB_BRACE);
         $demo = array();
-        foreach ($files as $file) {
+        foreach ($files as $key => $file) {
             $extension = basename($file, '.php');
             $this->load->config($extension);
-            $demo[] = $this->config->get($extension.'_demo');
+            $demo[$key] = $this->config->get($extension.'_demo');
+            $demo['config'] = $extension;
         }
 
         return $demo;
