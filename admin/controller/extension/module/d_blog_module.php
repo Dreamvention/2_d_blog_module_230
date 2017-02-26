@@ -429,17 +429,28 @@ class ControllerExtensionModuleDBlogModule extends Controller {
     */
 
     public function installDemoData(){
-        $sql = 'd_blog_module.sql';
-        if(isset($this->request->get['sql'])){
-            $sql = $this->request->get['sql'];
+        $config = 'd_blog_module';
+        if(isset($this->request->get['config'])){
+            $config = $this->request->get['config'];
         }
+
+        $this->config->load($config);
+        $data = $this->config->get($config.'_demo');
+
         $this->load->language($this->route);
         $this->load->model('extension/module/d_blog_module');
         $setting = $this->model_extension_module_d_blog_module->getConfigData($this->codename, $this->codename.'_setting', $this->store_id, $this->config_file);
         
-        
-        $result = $this->model_extension_module_d_blog_module->installDemoData(DIR_APPLICATION.$sql);
+        $result = $this->model_extension_module_d_blog_module->installDemoData(DIR_APPLICATION.$data['sql']);
 
+        if(!empty($data['permission']) && is_array($data['permission'])){
+            $this->load->model('user/user_group');
+            foreach($data['permission'] as $permission => $routes){
+                foreach($routes as $route){
+                    $this->model_user_user_group->addPermission($this->user->getId(), $permission, $route);
+                }
+            }
+        }
         if($result){
             $json['success'] = $this->language->get('success_install_demo_data');
         }else{
