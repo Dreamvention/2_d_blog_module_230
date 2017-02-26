@@ -440,7 +440,7 @@ class ModelExtensionModuleDBlogModule extends Model {
             $extension = basename($file, '.php');
             $this->load->config($extension);
             $demo[$key] = $this->config->get($extension.'_demo');
-            $demo['config'] = $extension;
+            $demo[$key]['config'] = $extension;
         }
 
         return $demo;
