@@ -8,8 +8,6 @@ class ModelDBlogModulePost extends Model {
             tag = '" . $this->db->escape($data['tag']) . "',
             review_display = '" .(int)$data['review_display'] . "',
             images_review = '" .(int)$data['images_review'] . "',
-            image_title = '" .$data['image_title'] . "',
-            image_alt = '" .$data['image_alt'] . "',
             status = '" . $this->db->escape($data['status']) . "',
             date_added = NOW(),
             date_published = '" . $data['date_published'] . "',
@@ -104,8 +102,6 @@ class ModelDBlogModulePost extends Model {
             review_display ='".(int)$data['review_display']."',
             images_review ='".(int)$data['images_review']."',
             tag = '" . $this->db->escape($data['tag']) . "',
-            image_title = '" .$data['image_title'] . "',
-            image_alt = '" .$data['image_alt'] . "',
             date_published = '" . $data['date_published'] . "',
             date_modified = NOW() WHERE post_id = '" . (int) $post_id . "'");
 

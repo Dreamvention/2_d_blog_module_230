@@ -3,11 +3,16 @@
 class ModelDBlogModuleAuthorGroup extends Model {
 
     public function addAuthorGroup($data) {
-        $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_group SET name = '" . $this->db->escape($data['name']) . "', permission = '" . (isset($data['permission']) ? $this->db->escape(json_encode($data['permission'])) : '') . "'");
+        $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_group SET 
+            name = '" . $this->db->escape($data['name']) . "', 
+            permission = '" . (isset($data['permission']) ? $this->db->escape(json_encode($data['permission'])) : '') . "'");
     }
 
     public function editAuthorGroup($author_group_id, $data) {
-        $this->db->query("UPDATE " . DB_PREFIX . "bm_author_group SET name = '" . $this->db->escape($data['name']) . "', permission = '" . (isset($data['permission']) ? $this->db->escape(json_encode($data['permission'])) : '') . "' WHERE author_group_id = '" . (int)$author_group_id . "'");
+        $this->db->query("UPDATE " . DB_PREFIX . "bm_author_group SET 
+            name = '" . $this->db->escape($data['name']) . "', 
+            permission = '" . (isset($data['permission']) ? $this->db->escape(json_encode($data['permission'])) : '') . "' 
+            WHERE author_group_id = '" . (int)$author_group_id . "'");
     }
 
     public function deleteAuthorGroup($author_group_id) {

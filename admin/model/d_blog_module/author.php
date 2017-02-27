@@ -6,33 +6,44 @@ class ModelDBlogModuleAuthor extends Model {
         $user_id = (int) $data['user_id'];
         if(!empty($data['user_id']))
         {
-            $this->db->query("UPDATE `" . DB_PREFIX . "user` SET username = '" . $this->db->escape($data['username']) .
-                "', user_group_id = '" . $this->db->escape($data['user_group_id']) .  "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname'])
-                . "', image = '" . $this->db->escape($data['image']) . "' WHERE user_id = '" . $data['user_id'] . "'");
+            $this->db->query("UPDATE `" . DB_PREFIX . "user` SET 
+                username = '" . $this->db->escape($data['username']) . "', 
+                user_group_id = '" . $this->db->escape($data['user_group_id']) . "', 
+                firstname = '" . $this->db->escape($data['firstname']) . "', 
+                lastname = '" . $this->db->escape($data['lastname']) . "', 
+                image = '" . $this->db->escape($data['image']) . "' 
+                WHERE user_id = '" . $data['user_id'] . "'");
 
             if ($data['password']) {
-                $this->db->query("UPDATE `" . DB_PREFIX . "user` SET salt = '" . $this->db->escape($salt = token(9)) . "', password = '"
-                    . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE user_id = '" .$data['user_id'] . "'");
+                $this->db->query("UPDATE `" . DB_PREFIX . "user` SET 
+                    salt = '" . $this->db->escape($salt = token(9)) . "', 
+                    password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' 
+                    WHERE user_id = '" .$data['user_id'] . "'");
             }
         }
         else
         {
-            $this->db->query("INSERT INTO `" . DB_PREFIX . "user` SET username = '" . $this->db->escape($data['username']) .  "', user_group_id = '" . $this->db->escape($data['user_group_id']) .
-                "', salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt
-                    . sha1($salt . sha1($data['password'])))) . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '"
-                . $this->db->escape($data['lastname']) . "', image = '"
-                . $this->db->escape($data['image']). "', date_added = NOW(), status=1");
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "user` SET 
+                username = '" . $this->db->escape($data['username']) .  "', 
+                user_group_id = '" . $this->db->escape($data['user_group_id']) . "', 
+                salt = '" . $this->db->escape($salt = token(9)) . "', 
+                password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', 
+                firstname = '" . $this->db->escape($data['firstname']) . "', 
+                lastname = '" . $this->db->escape($data['lastname']) . "', 
+                image = '" . $this->db->escape($data['image']). "', 
+                date_added = NOW(), status=1");
             $user_id = $this->db->getLastId();
         }
 
-        $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author "
-            . "SET user_id = '" .$user_id  . "', author_group_id = '" . $data['author_group_id'] . "'");
+        $this->db->query("INSERT INTO `" . DB_PREFIX . "bm_author` SET 
+            user_id = '" .$user_id  . "', 
+            author_group_id = '" . $data['author_group_id'] . "'");
 
         $author_id = $this->db->getLastId();
 
         foreach ($data['author_description'] as $language_id => $value) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_description "
-                . "SET author_id = '" . (int) $author_id
+            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_description 
+                SET author_id = '" . (int) $author_id
                 . "', language_id = '" . (int) $language_id
                 . "', name = '" . $this->db->escape($value['name'])
                 . "', description = '" . $this->db->escape($value['description'])
@@ -66,29 +77,37 @@ class ModelDBlogModuleAuthor extends Model {
 
     public function editAuthor($author_id, $data) {
 
-        $this->db->query("UPDATE `" . DB_PREFIX . "bm_author` SET "
-            . "user_id = '" . (int) $data['user_id'] . "', author_group_id = '" . (int) $data['author_group_id'] . "' WHERE author_id = '" . (int) $author_id . "'");
+        $this->db->query("UPDATE `" . DB_PREFIX . "bm_author` SET 
+            user_id = '" . (int) $data['user_id'] . "', 
+            author_group_id = '" . (int) $data['author_group_id'] . "' 
+            WHERE author_id = '" . (int) $author_id . "'");
 
         if(!empty($data['user_id']))
         {
-            $this->db->query("UPDATE `" . DB_PREFIX . "user` SET username = '" . $this->db->escape($data['username']) . "', firstname = '" . $this->db->escape($data['firstname'])
-                . "', lastname = '" . $this->db->escape($data['lastname']) . "', user_group_id = '" . $this->db->escape($data['user_group_id'])
-                . "', image = '" . $this->db->escape($data['image']) . "' WHERE user_id = '" . $data['user_id'] . "'");
+            $this->db->query("UPDATE `" . DB_PREFIX . "user` SET 
+                username = '" . $this->db->escape($data['username']) . "', 
+                firstname = '" . $this->db->escape($data['firstname']) . "', 
+                lastname = '" . $this->db->escape($data['lastname']) . "', 
+                user_group_id = '" . $this->db->escape($data['user_group_id']) . "', 
+                image = '" . $this->db->escape($data['image']) . "' 
+                WHERE user_id = '" . $data['user_id'] . "'");
 
             if ($data['password']) {
-                $this->db->query("UPDATE `" . DB_PREFIX . "user` SET salt = '" . $this->db->escape($salt = token(9)) . "', password = '"
-                    . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE user_id = '" .$data['user_id'] . "'");
+                $this->db->query("UPDATE `" . DB_PREFIX . "user` SET 
+                    salt = '" . $this->db->escape($salt = token(9)) . "', 
+                    password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' 
+                    WHERE user_id = '" .$data['user_id'] . "'");
             }
         }
 
         $this->db->query("DELETE FROM " . DB_PREFIX . "bm_author_description WHERE author_id = '" . (int) $author_id . "'");
         foreach ($data['author_description'] as $language_id => $value) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_description "
-                . "SET language_id = '" . (int) $language_id
-                . "', name = '" . $this->db->escape($value['name'])
-                . "', author_id = '" . (int) $author_id
-                . "', description = '" . $this->db->escape($value['description'])
-                . "', short_description = '" . $this->db->escape($value['short_description']) . "'");
+            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_description SET 
+                language_id = '" . (int) $language_id . "', 
+                name = '" . $this->db->escape($value['name']) . "', 
+                author_id = '" . (int) $author_id . "', 
+                description = '" . $this->db->escape($value['description']) . "', 
+                short_description = '" . $this->db->escape($value['short_description']) . "'");
         }
 
         // if (!empty($data['keyword'])) {

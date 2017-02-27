@@ -110,7 +110,7 @@
                                         <div class="bs-callout bs-callout-warning  ">
                                             <?php echo $help_install_demo_data; ?>
                                         </div>
-                                    </div><!-- //update -->
+                                    </div>
                                 </div>
                                 <?php } ?>
                                 <div class="form-group">
@@ -999,54 +999,6 @@
 
     });
 
-    $('body').on('click', '#button_update', function(){
-        $.ajax( {
-            url: '<?php echo $update; ?>',
-            type: 'post',
-            dataType: 'json',
-
-            beforeSend: function() {
-                $('#button_update').find('.fa-refresh').addClass('fa-spin');
-            },
-
-            complete: function() {
-                $('#button_update').find('.fa-refresh').removeClass('fa-spin');
-            },
-
-            success: function(json) {
-                console.log(json);
-
-                if(json['error']){
-                    $('#notification_update').html('<div class="alert alert-danger m-b-none">' + json['error'] + '</div>')
-                }
-
-                if(json['warning']){
-                    $html = '';
-
-                    if(json['update']){
-                        $.each(json['update'] , function(k, v) {
-                            $html += '<div>Version: ' +k+ '</div><div>'+ v +'</div>';
-                        });
-                    }
-                    $('#notification_update').html('<div class="alert alert-warning alert-inline">' + json['warning'] + $html + '</div>')
-                }
-
-                if(json['success']){
-                    $('#notification_update').html('<div class="alert alert-success alert-inline">' + json['success'] + '</div>')
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    });
-    $('body').on('click','#export', function(){
-        location = 'index.php?route=extension/module/d_blog_module/download&export_type='+$('[name=export_type]:checked').val()+'&token=<?php echo $token; ?>';
-    });
-    $('body').on('click','#importBtn', function(){
-        $('#import').submit();
-    });
-    
     $('body').on('click', '#enable_ssl_url', function(){
         var ssl_url = $(this).parents('.input-group').find('input[name$=\'[ssl_url]\']').val();
         $.ajax( {
