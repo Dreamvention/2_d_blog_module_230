@@ -96,7 +96,7 @@ class ModelDBlogModulePost extends Model {
         return $post_id;
     }
 
-    public function editPost($post_id, $data,$multi_lang = 0) {
+    public function editPost($post_id, $data) {
         $this->db->query("UPDATE " . DB_PREFIX . "bm_post
             SET
             user_id = '".(int)$data['current_author']."',
@@ -198,7 +198,7 @@ class ModelDBlogModulePost extends Model {
         $this->cache->delete('post');
     }
 
-    public function copyPost($post_id, $multi_lang) {
+    public function copyPost($post_id) {
         $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "bm_post p
             LEFT JOIN " . DB_PREFIX . "bm_post_description pd
             ON (p.post_id = pd.post_id)
@@ -222,7 +222,7 @@ class ModelDBlogModulePost extends Model {
             $data['post_store'] = $this->getPostStores($post_id);
             $data['post_layout'] = $this->getPostLayouts($post_id);
             $data['current_author'] = $this->getAuthorByPost($post_id);
-            $this->addPost($data, $multi_lang);
+            $this->addPost($data);
         }
     }
 

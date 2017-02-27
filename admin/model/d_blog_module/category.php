@@ -57,7 +57,7 @@ class ModelDBlogModuleCategory extends Model {
         return $category_id;
     }
 
-    public function copyCategory($category_id, $multi_lang) {
+    public function copyCategory($category_id) {
         $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "bm_category c "
             . "LEFT JOIN " . DB_PREFIX . "bm_category_description cd "
             . "ON (c.category_id = cd.category_id) "
@@ -76,11 +76,11 @@ class ModelDBlogModuleCategory extends Model {
             $data['category_description'] = $this->getCategoryDescriptions($category_id);
 
 
-            $this->addCategory($data, $multi_lang);
+            $this->addCategory($data);
         }
     }
 
-    public function editCategory($category_id, $data,$multi_lang) {
+    public function editCategory($category_id, $data ) {
 
         $this->db->query("UPDATE " . DB_PREFIX . "bm_category "
             . "SET parent_id = '" . (int) $data['parent_id'] . "', "
