@@ -982,8 +982,7 @@
                     },
 
                     success: function(json) {
-                        $('.alert').remove();
-                        console.log(json);
+                        $notification.find('.alert').remove();
 
                         if(json['error']){
                             $notification.html('<div class="alert alert-danger">' + json['error'] + '</div>')
