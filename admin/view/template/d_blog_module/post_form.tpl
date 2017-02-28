@@ -371,6 +371,9 @@
 </div>
         <script type="text/javascript"><!--
             <?php foreach ($languages as $language) { ?>
+                <?php if($style_short_description_display){?>
+                    $("#input-short-description<?php echo $language['language_id']; ?>").summernote({ height: 100 });
+                <?php } ?>
                 $("#input-description<?php echo $language['language_id']; ?>").summernote({ height: 300 });
                 <?php } ?>
                 //--></script>

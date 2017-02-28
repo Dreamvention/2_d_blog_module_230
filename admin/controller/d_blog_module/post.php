@@ -453,6 +453,8 @@ class ControllerDBlogModulePost extends Controller {
         $data['text_no'] = $this->language->get('text_no');
         $data['text_default'] = $this->language->get('text_default');
 
+        $data['style_short_description_display'] = $this->setting['post']['style_short_description_display'];
+
         if (isset($this->error['warning'])) {
             $data['error_warning'] = $this->error['warning'];
         } else {

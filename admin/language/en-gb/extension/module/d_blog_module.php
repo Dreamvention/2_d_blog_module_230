@@ -41,7 +41,7 @@ $_['help_range_type']                           = '(Optional, leave empty if not
 $_['help_incremental_yes']                      = '(Update and / or add data)';
 $_['help_incremental_no']                       = '(Remove all the old data before importing)';
 $_['help_review_social_login']                  = '<h4>Social login</h4><p>If you have social login installed, you can allow visitors to write comments in posts by registrting through their social network account. You can <a href="http://www.opencart.com/index.php?route=extension/extension/info&extension_id=16711" target="_blank">upgrade social login here</a></p>';
-$_['help_style_short_description_display']      = '<h4>How it\'s works?</h4><p>If you want use any style for your short description, turn on switcher. Be careful, this option disable "Set short description length".</p>';
+$_['help_style_short_description_display']      = '<h4>How it works?</h4><p>If you want ещ use any style for your post short description, turn on this switch. Be careful, this option disables the settings of "Set short description length" and will include html tags in short description.</p>';
 
 // Entry
 $_['entry_export_type']                         = 'Select which data you want to export:';
