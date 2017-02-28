@@ -42,16 +42,19 @@
                     display: block;
                 }
               </style>
-              <div class="form-group">
+              <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-username"><?php echo $entry_username; ?></label>
                 <div class="col-sm-10">
-                  <div id="input_username" class="m-b">
+                  <div id="input_username">
                       <input type="text" name="username" value="<?php echo $username; ?>" placeholder="<?php echo $entry_username; ?>" id="input-username" class="form-control" />
                       <span class="input-group-btn">
                         <a class="btn btn-danger clear"><i class="fa fa-close"></i></a>
                       </span>
                    </div>
-                   <div class="bs-callout bs-callout-warning user-info">
+                   <?php if ($error_username) { ?>
+                    <div class="text-danger"><?php echo $error_username; ?></div>
+                    <?php  } ?>
+                   <div class="bs-callout bs-callout-warning user-info m-t">
                         <?php echo $help_user_editing; ?>
                    </div>
                   <input type="hidden" name="user_id" value="<?php echo $user_id; ?>" id="input-user_id" class="form-control" />

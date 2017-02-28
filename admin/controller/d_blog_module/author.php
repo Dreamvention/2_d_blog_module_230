@@ -321,6 +321,12 @@ class ControllerDBlogModuleAuthor extends Controller {
             $data['error_warning'] = '';
         }
 
+        if (isset($this->error['username'])) {
+            $data['error_username'] = $this->error['username'];
+        } else {
+            $data['error_username'] = '';
+        }
+
         if (isset($this->error['title'])) {
             $data['error_title'] = $this->error['title'];
         } else {
@@ -570,7 +576,7 @@ class ControllerDBlogModuleAuthor extends Controller {
             }
         }
 
-        if ((utf8_strlen($this->request->post['username']) < 3) || (utf8_strlen($this->request->post['username']) > 20)) {
+        if (empty($this->request->post['username']) || (utf8_strlen($this->request->post['username']) < 3) || (utf8_strlen($this->request->post['username']) > 20)) {
             $this->error['username'] = $this->language->get('error_username');
         }
         $this->load->model('user/user');
