@@ -87,9 +87,11 @@
                     <div class="col-md-6 post-nav-left">
                         {% if prev_post %}
                             <a href="{{prev_post.href}}" class="media">
-                                <div class="media-left">
-                                     <img class="media-object"  src="{{prev_post.thumb}}" data-holder-rendered="true">
-                                </div>
+                                {% if (prev_post.thumb) %}
+                                    <div class="media-left">
+                                         <img class="media-object"  src="{{prev_post.thumb}}" data-holder-rendered="true">
+                                    </div>
+                                {% endif %}
                                 <div class="media-body">
                                     <div class="h4 media-heading">{{prev_post.text}}</div>
                                     <div class="media-body">{{prev_post.short_description}}</div>
@@ -105,9 +107,11 @@
                                     <div class="h4 media-heading">{{next_post.text}}</div>
                                     <div class="media-body">{{next_post.short_description}}</div>
                                 </div>
-                                <div class="media-right">
-                                     <img class="media-object" src="{{next_post.thumb}}" data-holder-rendered="true">
-                                </div>
+                                {% if (next_post.thumb) %}
+                                    <div class="media-right">
+                                         <img class="media-object" src="{{next_post.thumb}}" data-holder-rendered="true">
+                                    </div>
+                                {% endif %}
                             </a>
                             {# <a class="btn btn-default pull-right" href="{{next_post.href}}">{{next_post.text}} ⟶</a> #}
                         {% endif %}
