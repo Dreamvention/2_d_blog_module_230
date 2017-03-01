@@ -40,7 +40,7 @@
             <div class="bm-posts">
                 <div class="row">
                     {% for post in posts %}
-                        {% if row %}
+                        {% if post.row %}
                             </div><div class="row">
                         {% endif %}
                         <div class="col-md-{{post.col}}">
