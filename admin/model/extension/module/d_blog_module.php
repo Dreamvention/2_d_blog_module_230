@@ -495,24 +495,22 @@ class ModelExtensionModuleDBlogModule extends Model {
                     }
                 }
             }
-            if($this->config->get('config_language_id')!=1){
-              $sql = "INSERT INTO ".DB_PREFIX."bm_post_description
-              (`post_id`, `language_id`, `title`, `short_description`, `description`, `meta_title`, `meta_description`, `meta_keyword`)
-              SELECT `post_id`, '".$this->config->get('config_language_id')."', `title`, `short_description`, `description`, `meta_title`, `meta_description`, `meta_keyword`
-               FROM ".DB_PREFIX."bm_post_description";
-              $this->db->query($sql);
-              $sql = "INSERT INTO ".DB_PREFIX."bm_category_description
-              (`category_id`, `language_id`, `title`, `description`, `meta_title`, `meta_keyword`, `meta_description`)
-              SELECT `category_id`, '".$this->config->get('config_language_id')."', `title`, `description`, `meta_title`, `meta_keyword`, `meta_description`
-               FROM ".DB_PREFIX."bm_category_description";
-              $this->db->query($sql);
-              $this->load->model('setting/setting');
-              $d_blog_module_date =  $this->model_setting_setting->getSetting('d_blog_module_date');
-              $d_blog_module_date['d_blog_module_date_setting'][$this->config->get('config_language_id')]['name'] = $d_blog_module_date['d_blog_module_date_setting']['1']['name'];
-              $this->model_setting_setting->editSetting('d_blog_module_date', $d_blog_module_date);
-              $d_blog_module_tags =  $this->model_setting_setting->getSetting('d_blog_module_tags');
-              $d_blog_module_tags['d_blog_module_tags_setting'][$this->config->get('config_language_id')]['name'] = $d_blog_module_tags['d_blog_module_tags_setting']['1']['name'];
-              $this->model_setting_setting->editSetting('d_blog_module_tags', $d_blog_module_tags);
+            $this->load->model('localisation/language');
+            $languages = $this->model_localisation_language->getLanguages();
+            foreach($languages as $language){
+                if($language['language_id'] != 1 ){
+                    $sql = "INSERT INTO ".DB_PREFIX."bm_post_description
+                        (`post_id`, `language_id`, `title`, `short_description`, `description`, `meta_title`, `meta_description`, `meta_keyword`)
+                        SELECT `post_id`, '".$language['language_id']."', `title`, `short_description`, `description`, `meta_title`, `meta_description`, `meta_keyword`
+                        FROM ".DB_PREFIX."bm_post_description";
+                    $this->db->query($sql);
+
+                    $sql = "INSERT INTO ".DB_PREFIX."bm_category_description
+                        (`category_id`, `language_id`, `title`, `description`, `meta_title`, `meta_keyword`, `meta_description`)
+                        SELECT `category_id`, '".$language['language_id']."', `title`, `description`, `meta_title`, `meta_keyword`, `meta_description`
+                        FROM ".DB_PREFIX."bm_category_description";
+                    $this->db->query($sql);
+                }
             }
         }else{
             return false;

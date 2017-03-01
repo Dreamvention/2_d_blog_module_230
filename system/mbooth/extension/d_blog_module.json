@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "name": "Blog module",
     "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "extension/module/d_blog_module",
@@ -20,10 +20,10 @@
         "url": "https://shopunity.net/licenses/free"
     },
     "install": {
-        "url": "extension/module/install&extension=d_blog_module"
+        "url": "extension/extension/module/install&extension=d_blog_module"
     },
     "uninstall": {
-        "url": "extension/module/uninstall&extension=d_blog_module"
+        "url": "extension/extension/module/uninstall&extension=d_blog_module"
     },
     "support": {
         "email": "support@dreamvention.com",
@@ -94,6 +94,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.1.5",
+            "change": "1. Minor fixes."
+        },
         {
             "version":"2.1.4",
             "change": "1. image fix."
