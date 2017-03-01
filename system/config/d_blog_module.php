@@ -11,6 +11,7 @@ $_['d_blog_module_setting'] = array(
         'main_category_id' => 1,
         'layout' => array(0 => 2),
         'post_page_limit' => 7,
+        'image_display' => 1,
         'image_width' => 1200,
         'image_height' => 750,
         'sub_category_display' => 1,

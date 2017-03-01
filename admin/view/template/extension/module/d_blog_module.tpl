@@ -250,6 +250,14 @@
                                         <input type="text" name="<?php echo $codename;?>_setting[category][post_page_limit]" value="<?php echo $setting['category']['post_page_limit']; ?>" placeholder="<?php echo $entry_category_post_page_limit; ?>"  class="form-control" />
                                     </div>
                                 </div><!-- //post_page_limit -->
+                                    
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_image_display; ?></label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="<?php echo $codename;?>_setting[category][image_display]" value="0" />
+                                        <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>"id="input_category_image_display" name="<?php echo $codename;?>_setting[category][image_display]" <?php echo ($setting['category']['image_display']) ? 'checked="checked"':'';?> value="1" />
+                                    </div>
+                                </div><!-- //checkbox -->
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input_text"><?php echo $entry_category_image_size; ?></label>

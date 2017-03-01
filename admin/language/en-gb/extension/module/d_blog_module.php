@@ -52,6 +52,7 @@ $_['entry_upload']                              = 'Upload File';
 $_['entry_status']                              = 'Status';
 $_['entry_theme']                               = 'Theme';
 $_['entry_category_main_category_id']           = 'Home category';
+$_['entry_category_image_display']              = 'Show main category image';
 $_['entry_category_layout']                     = 'Layout';
 $_['entry_category_post_page_limit']            = 'Post page limit';
 $_['entry_category_image_size']                 = 'Image size';
