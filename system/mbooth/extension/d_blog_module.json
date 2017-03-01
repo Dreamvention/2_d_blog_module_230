@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "name": "Blog module",
     "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "extension/module/d_blog_module",
@@ -94,6 +94,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.1.1",
+            "change": "hot fix."
+        },
         {
             "version":"2.1.0",
             "change": "twig support. separation of concerns."
