@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "name": "Blog module",
     "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "extension/module/d_blog_module",
@@ -94,6 +94,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.1.4",
+            "change": "1. image fix."
+        },
         {
             "version":"2.1.3",
             "change": "1. Option to hide show category image."
