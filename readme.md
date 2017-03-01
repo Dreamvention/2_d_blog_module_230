@@ -1,5 +1,8 @@
 #d_blog_module
 
+For version 2.2.x and below go [here](https://github.com/Dreamvention/2_d_blog_module)
+
+
 [DEMO](https://dreamvention.myshopunity.com/230/d_blog_module/index.php?route=d_blog_module/category)
 
 The blog framework for Opencart 2.x. It is Open sourse and avalible for anyone to include into thier theme of project. 
