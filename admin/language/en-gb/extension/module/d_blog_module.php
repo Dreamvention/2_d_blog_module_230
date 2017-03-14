@@ -33,6 +33,7 @@ $_['text_menu_category']                        = 'Categories';
 $_['text_menu_review']                          = 'Reviews';
 $_['text_menu_author']                          = 'Authors';
 
+$_['text_install_twig_support']                 = 'Install twig';
 $_['help_twig_support']                         = '<h4>Important! Twig support required</h4><p>Before you can activate the Blog module, you need to install Twig manager and activate Twig compatibility support.</p>';
 $_['help_layout']                               = '<h4>What is layout?</h4><p>A layout is a simple way of defining how your posts should be presented on the page. You can set 1 row with 1 column: you will see only one post under another. Dull, wouldn\'t you say?. Lest spice it up. Try setting 1 row - 1 columns, 2 row - 2 columns, 3 row - 3 columns. Make your blog standout.</p>';
 $_['help_home_category']                        = '<h4>What is Home category?</h4><p>It is best prectice to pick one category which will be your Home category. When going to the root of your blog, this category will be displayed. Every other category should be a child to it. This way you can edit the description and title and other things a category lets you do.</p>';

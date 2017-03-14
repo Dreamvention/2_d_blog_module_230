@@ -160,7 +160,12 @@
                                             <input type="hidden" name="<?php echo $codename;?>_status" value="0" />
                                             <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>" id="input_status" name="<?php echo $codename;?>_status" <?php echo (${$codename.'_status'}) ? 'checked="checked"':'';?> value="1" />
                                         <?php }else{ ?> 
-                                            <div class="alert alert-danger"><?php echo $help_twig_support; ?> </div>
+                                            <div class="alert alert-info">
+                                                <div class="row">
+                                                    <div class="col-md-10"><?php echo $help_twig_support; ?> </div>
+                                                    <div class="col-md-2"><a href="<?php echo $install_twig_support; ?>" class="btn btn-info btn-block"><?php echo $text_install_twig_support; ?></a></div>
+                                                </div>
+                                            </div>
                                         <?php } ?>
                                     </div>
                                 </div><!-- //status -->
@@ -215,7 +220,7 @@
                                         </div>
                                     </div>
                                     <script type="text" id="template_input_category_layout">
-                                        <div class="input-group">
+                                        <div class="input-group m-b">
                                                 <select name="<?php echo $codename;?>_setting[category][layout][]" class="form-control">
                                                     <?php foreach ($cols as $col) { ?>
                                                        <option value="<?php echo $col; ?>"><?php echo $col; ?></option>
@@ -783,7 +788,7 @@
                                         </div>
                                     </div>
                                     <script type="text" id="template_input_author_layout">
-                                        <div class="input-group">
+                                        <div class="input-group m-b">
                                                 <select name="<?php echo $codename;?>_setting[author][layout][]" class="form-control">
                                                     <?php foreach ($cols as $col) { ?>
                                                     <option value="<?php echo $col; ?>"><?php echo $col; ?></option>
