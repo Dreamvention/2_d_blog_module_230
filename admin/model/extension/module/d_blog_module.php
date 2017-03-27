@@ -551,7 +551,7 @@ class ModelExtensionModuleDBlogModule extends Model {
 
         foreach ($query->rows as $author) {
             $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_description SET 
-                category_id = '" . (int)$author['author_id'] . "', 
+                author_id = '" . (int)$author['author_id'] . "', 
                 language_id = '" . (int)$data['language_id'] . "', 
                 name = '" . $this->db->escape($author['name']) . "', 
                 description = '" . $this->db->escape($author['description']) . "', 
