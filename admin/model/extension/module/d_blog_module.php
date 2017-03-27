@@ -519,6 +519,56 @@ class ModelExtensionModuleDBlogModule extends Model {
         return true;
     }
 
+    /*
+    *   Add Language.
+    */
+    public function addLanguage($data) {
+
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "bm_post_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        foreach ($query->rows as $post) {
+            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_post_description SET 
+                post_id = '" . (int)$post['post_id'] . "', 
+                language_id = '" . (int)$data['language_id'] . "', 
+                title = '" . $this->db->escape($post['title']) . "', 
+                description = '" . $this->db->escape($post['description']) . "', 
+                short_description = '" . $this->db->escape($post['short_description']) . "', 
+                meta_title = '" . $this->db->escape($post['meta_title']) . "'");
+        }
+
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "bm_category_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        foreach ($query->rows as $category) {
+            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_category_description SET 
+                category_id = '" . (int)$category['category_id'] . "', 
+                language_id = '" . (int)$data['language_id'] . "',  
+                title = '" . $this->db->escape($category['title']) . "', 
+                description = '" . $this->db->escape($category['description']) . "', 
+                meta_title = '" . $this->db->escape($category['meta_title']) . "'");
+        }
+
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "bm_author_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+        foreach ($query->rows as $author) {
+            $this->db->query("INSERT INTO " . DB_PREFIX . "bm_author_description SET 
+                category_id = '" . (int)$author['author_id'] . "', 
+                language_id = '" . (int)$data['language_id'] . "', 
+                name = '" . $this->db->escape($author['name']) . "', 
+                description = '" . $this->db->escape($author['description']) . "', 
+                short_description = '" . $this->db->escape($author['short_description']) . "'");
+        }
+    }
+    
+    /*
+    *   Delete Language.
+    */
+    public function deleteLanguage($data) {
+        $this->db->query("DELETE FROM " . DB_PREFIX . "bm_post_description WHERE language_id = '" . (int)$data['language_id'] . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "bm_category_description WHERE language_id = '" . (int)$data['language_id'] . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "bm_author_description WHERE language_id = '" . (int)$data['language_id'] . "'");
+    }
+    
+
     protected function getLanguages() {
         $query = $this->db->query( "SELECT * FROM `".DB_PREFIX."language` WHERE `status`=1 ORDER BY `code`" );
         return $query->rows;
