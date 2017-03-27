@@ -422,6 +422,9 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $this->model_module_d_event_manager->addEvent($this->codename, 'admin/view/common/column_left/before', 'event/d_blog_module/view_common_column_left_before');
         $this->model_module_d_event_manager->addEvent($this->codename, 'admin/view/setting/setting/before', 'event/d_blog_module/view_setting_setting_captcha_before');
         $this->model_module_d_event_manager->addEvent($this->codename, 'catalog/view/common/header/before', 'event/d_blog_module/view_common_header_before');
+
+        $this->model_module_d_event_manager->addEvent($this->codename, 'admin/model/localisation/language/addLanguage/after', 'event/d_blog_module/model_localisation_language_addLanguage_after');
+        $this->model_module_d_event_manager->addEvent($this->codename, 'admin/model/localisation/language/deleteLanguage/after', 'event/d_blog_module/model_localisation_language_deleteLanguage_after');
     }
 
     public function uninstallEvents(){
