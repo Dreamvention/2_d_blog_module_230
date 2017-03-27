@@ -60,7 +60,7 @@ class ControllerEventDBlogModule extends Controller {
     }
 
     //admin/model/localisation/language/addLanguage/after
-    public function model_localisation_language_addLanguage_after(&$route, &$data, &$output){
+    public function model_localisation_language_addLanguage_after($route, $data, $output){
         $this->load->model('extension/module/d_blog_module');
 
         $data = $data[0];
@@ -71,7 +71,7 @@ class ControllerEventDBlogModule extends Controller {
     }
 
     //admin/model/localisation/language/deleteLanguage/after
-    public function model_localisation_language_deleteLanguage_after(&$route, &$data, &$output){
+    public function model_localisation_language_deleteLanguage_after($route, $data, $output){
         $this->load->model('extension/module/d_blog_module');
 
         $language_id = $data[0];
