@@ -13,7 +13,7 @@ $_['text_width']                                = 'Width';
 $_['text_height']                               = 'Height';
 
 $_['help_install_demo_data']                    = '<h4>Warning! These options will clear your Blog data forever</h4>
-<p>You can use this option to start off quickly with demo data at your disposal. But be very careful, because this option will cleare the data accordingly. So before you do this please backup your current blog data if you have any with Export function.</p>';
+<p>You can use this option to start populare your blog with demo data. But be careful, because this option will cleare the any blog data your already have. So before you do this please backup your current blog with the Opencart backup function.</p>';
 $_['warning_install_demo_data']                 = 'You are about to delete any data that you have in your blog and replace with demo data. Are you sure you want to do this?';
 //tab
 $_['tab_setting']                               = 'Setting';
