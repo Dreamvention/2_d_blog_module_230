@@ -37,7 +37,7 @@ class ControllerEventDBlogModule extends Controller {
             $designer_data = array(
                 'config' => 'd_blog_module_category',
                 'content' => $data['description'],
-                'field_name' => 'category_description['.(int)$this->config->get('config_language_id').'][description]',
+                'field_name' => 'description['.(int)$this->config->get('config_language_id').'][description]',
                 'id' => $data['category_id']
                 );
             $this->load->model('extension/module/d_visual_designer');
