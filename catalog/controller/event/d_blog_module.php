@@ -28,4 +28,53 @@ class ControllerEventDBlogModule extends Controller {
 			);
 		}
 	}
+
+    public function view_category_before(&$view, &$data, &$output)
+    {
+
+        if(isset($data['description'])){
+
+            $designer_data = array(
+                'config' => 'd_blog_module_category',
+                'content' => $data['description'],
+                'field_name' => 'category_description['.(int)$this->config->get('config_language_id').'][description]',
+                'id' => $data['category_id']
+                );
+            $this->load->model('extension/module/d_visual_designer');
+            $data['description'] = $this->model_extension_module_d_visual_designer->parseDescription($designer_data);
+            $data['description'] = html_entity_decode($data['description'], ENT_QUOTES, 'UTF-8');
+        }
+    }
+
+    public function view_post_before(&$view, &$data, &$output)
+    {
+        if(isset($data['description'])){
+      
+            $designer_data = array(
+                'config' => 'd_blog_module_post',
+                'content' => $data['description'],
+                'field_name' => 'description['.(int)$this->config->get('config_language_id').'][description]',
+                'id' => $data['post_id']
+                );
+            $this->load->model('extension/module/d_visual_designer');
+            $data['description'] = $this->model_extension_module_d_visual_designer->parseDescription($designer_data);
+            $data['description'] = html_entity_decode($data['description'], ENT_QUOTES, 'UTF-8');
+        }
+    }
+
+    public function view_author_before(&$view, &$data, &$output)
+    {
+        if(isset($data['description'])){
+      
+            $designer_data = array(
+                'config' => 'd_blog_module_author',
+                'content' => $data['description'],
+                'field_name' => 'description['.(int)$this->config->get('config_language_id').'][description]',
+                'id' => $data['user_id']
+                );
+            $this->load->model('extension/module/d_visual_designer');
+            $data['description'] = $this->model_extension_module_d_visual_designer->parseDescription($designer_data);
+            $data['description'] = html_entity_decode($data['description'], ENT_QUOTES, 'UTF-8');
+        }
+    }
 }

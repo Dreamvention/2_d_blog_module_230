@@ -18,6 +18,7 @@ var Review = {
         form.find('input[name=\'reply_to_review_id\']').val(review_id);
 
         this.hideRating();
+        this.scrollToForm();
     },
 
     cancelReply: function(){
@@ -133,6 +134,10 @@ var Review = {
                  }
             }
         });
+    },
+
+    scrollToForm: function(){
+        $('html, body').animate({ scrollTop: this.setting.form.offset().top }, 'slow');
     },
 
     render: function() {

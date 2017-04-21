@@ -25,9 +25,7 @@ class ControllerDBlogModuleCategory extends Controller {
         $this->load->language('d_blog_module/category');
         $this->document->addStyle('view/javascript/summernote/summernote.css');
         $this->document->addScript('view/javascript/summernote/summernote.js');
-        if($this->config->get('d_visual_designer_status')) {
-            $this->document->addScript('view/javascript/d_visual_designer/d_visual_designer.js');
-        }
+        
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('d_blog_module/category');
@@ -51,9 +49,7 @@ class ControllerDBlogModuleCategory extends Controller {
         $this->load->language('d_blog_module/category');
         $this->document->addStyle('view/javascript/summernote/summernote.css');
         $this->document->addScript('view/javascript/summernote/summernote.js');
-        if($this->config->get('d_visual_designer_status')) {
-            $this->document->addScript('view/javascript/d_visual_designer/d_visual_designer.js');
-        }
+        
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('d_blog_module/category');

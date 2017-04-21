@@ -299,6 +299,16 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['tab_instruction'] = $this->language->get('tab_instruction');
         $data['text_instruction'] = $this->language->get('text_instruction');
 
+        $data['ads'] = false;
+        $data['extension_id'] = false;
+        if(!file_exists(DIR_SYSTEM.'mbooth/extension/d_seo_module_blog.json')){
+            $data['ads'] = true;
+            $data['extension_id'] = 121; 
+        }
+        if(!file_exists(DIR_SYSTEM.'mbooth/extension/d_blog_module_pack.json')){
+            $data['ads'] = true;
+            $data['extension_id'] = 119; 
+        }
 
         if (isset($this->request->post[$this->codename.'_status'])) {
             $data[$this->codename.'_status'] = $this->request->post[$this->codename.'_status'];

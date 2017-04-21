@@ -118,16 +118,6 @@ class ControllerDBlogModulePost extends Controller {
             $data['author_name'] = (isset($author['name'])) ? $author['name'] : '';
             $data['author_description'] = (isset($author['short_description'])) ? strip_tags(html_entity_decode($author['short_description'], ENT_QUOTES, 'UTF-8')) : '';
 
-            if($this->config->get('d_visual_designer_status')) {
-                $this->load->model('extension/module/d_visual_designer');
-                $designer_data = array(
-                    'config' => 'edit_blog_module_post',
-                    'content' => $post_info['description'],
-                    'field_name' => 'description['.(int)$this->config->get('config_language_id').'][description]',
-                    'id' => $post_id
-                    );  
-                $post_info['description'] = $this->model_extension_module_d_visual_designer->parseDescription($designer_data);
-            }
             $data['description'] = html_entity_decode($post_info['description'], ENT_QUOTES, 'UTF-8');
             $data['date_published'] = date($this->setting['post']['date_format'], strtotime($post_info['date_published']));
             $data['date_published_link'] = $this->url->link('d_blog_module/search', 'date_published=' . date("m", strtotime($post_info['date_published'])) .'-'. date("Y", strtotime($post_info['date_published'])), 'SSL');

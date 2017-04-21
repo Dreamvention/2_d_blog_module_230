@@ -136,14 +136,26 @@
 .bm .bm-category-info .image,
 .bm .bm-author-info .image {
   max-width: 100%;
-  float: none;
-  margin-right: 0px; }
+  float: left;
+  margin-right: 15px; }
+  @media (min-width: 768px) {
+    .bm .bm-category-info .image,
+    .bm .bm-author-info .image {
+      width: 300px; } }
 .bm .bm-category-info .description,
 .bm .bm-author-info .description {
   margin-top: 15px;
   display: block;
   font-size: 14px;
   line-height: 24px; }
+.bm .bm-category-info .image + .description,
+.bm .bm-author-info .image + .description {
+  clear: both; }
+  @media (min-width: 768px) {
+    .bm .bm-category-info .image + .description,
+    .bm .bm-author-info .image + .description {
+      margin-left: 330px;
+      clear: none; } }
 .bm .bm-post-info .category {
   margin: 0px;
   margin-top: 10px;

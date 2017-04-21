@@ -74,6 +74,7 @@ class ControllerDBlogModuleAuthor extends Controller {
         } else {
             $user_id = 0;
         }
+        $data['user_id'] = $user_id;
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
@@ -144,16 +145,7 @@ class ControllerDBlogModuleAuthor extends Controller {
 
 
             $data['short_description'] =  strip_tags(html_entity_decode($author['short_description'], ENT_QUOTES, 'UTF-8'));
-            if($this->config->get('d_visual_designer_status')) {
-                $this->load->model('extension/module/d_visual_designer');
-                $designer_data = array(
-                    'config' => 'edit_blog_module_author',
-                    'content' => $author['description'],
-                    'field_name' => 'description['.(int)$this->config->get('config_language_id').'][description]',
-                    'id' => $user_id
-                );  
-                $author['description'] = $this->model_extension_module_d_visual_designer->parseDescription($designer_data);
-            }
+
             $data['description'] = html_entity_decode($author['description'], ENT_QUOTES, 'UTF-8');
 
             if ($author['image']) {

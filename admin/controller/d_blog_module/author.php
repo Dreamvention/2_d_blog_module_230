@@ -253,9 +253,6 @@ class ControllerDBlogModuleAuthor extends Controller {
         $this->document->addStyle('view/stylesheet/shopunity/bootstrap.css');
         $this->document->addStyle('view/javascript/summernote/summernote.css');
         $this->document->addScript('view/javascript/summernote/summernote.js');
-        if($this->config->get('d_visual_designer_status')) {
-            $this->document->addScript('view/javascript/d_visual_designer/d_visual_designer.js');
-        }
 
         $data['heading_title'] = $this->language->get('heading_title');
         $data['text_form'] = !isset($this->request->get['category_id']) ?    $this->language->get('text_add') :    $this->language->get('text_edit');

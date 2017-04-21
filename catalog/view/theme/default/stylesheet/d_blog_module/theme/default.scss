@@ -212,8 +212,13 @@ $btn-border-radius:                 2px;
     .bm-author-info{
         .image{
             max-width: 100%;
-            float: none;
-            margin-right: 0px;
+            float: left;
+            margin-right: 15px;
+
+            @media (min-width: 768px) {
+                width: 300px;
+            }
+
         }
         .description{
             margin-top: 15px;
@@ -221,7 +226,17 @@ $btn-border-radius:                 2px;
             font-size: 14px;
             line-height: 24px;
         }
+
+        .image + .description{
+            clear:both;
+            @media (min-width: 768px) {
+                margin-left:330px;
+                clear:none;
+            }
+        }
     }
+
+
     .bm-categories{
         .item-cateogry{
             .title{
