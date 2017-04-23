@@ -79,6 +79,7 @@
         "catalog/view/theme/default/javascript/d_blog_module/main.js",
         "catalog/view/theme/default/javascript/d_blog_module/post.js",
         "catalog/view/theme/default/javascript/d_blog_module/review.js",
+        "catalog/view/theme/default/stylesheet/d_blog_module/animate.css",
         "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.scss",
         "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css.map",
         "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css",
