@@ -37,24 +37,7 @@
             {% endif %}
 
             {% if posts %}
-            <div class="bm-posts">
-                <div class="row">
-                    {% for post in posts %}
-                        {% if post.row %}
-                            </div><div class="row">
-                        {% endif %}
-                        <div class="col-md-{{post.col}}">
-                            {% include template('d_blog_module/post_thumb') with post %}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="bm-pagination">
-                    <div class="row">
-                        <div class="col-sm-6 text-left">{{pagination}}</div>
-                        <div class="col-sm-6 text-right">{{results}}</div>
-                    </div>
-                </div>
-            </div>
+                {% include template(layout_template) with posts %}
             {% endif %}
 
             {% if not posts %}

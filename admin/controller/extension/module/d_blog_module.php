@@ -210,6 +210,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         
         $data['entry_config_files'] = $this->language->get('entry_config_files');
         $data['entry_category_layout'] = $this->language->get('entry_category_layout');
+        $data['entry_category_layout_type'] = $this->language->get('entry_category_layout_type');
         $data['entry_category_main_category_id'] = $this->language->get('entry_category_main_category_id');
         $data['entry_category_post_page_limit'] = $this->language->get('entry_category_post_page_limit');
         $data['entry_category_image_display'] = $this->language->get('entry_category_image_display');
@@ -219,7 +220,6 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['entry_category_sub_category_image'] = $this->language->get('entry_category_sub_category_image');
         $data['entry_category_sub_category_post_count'] = $this->language->get('entry_category_sub_category_post_count');
         $data['entry_category_sub_category_image_size'] = $this->language->get('entry_category_sub_category_image_size');
-        
 
         $data['entry_post_image_display'] = $this->language->get('entry_post_image_display');
         $data['entry_post_popup_display'] = $this->language->get('entry_post_popup_display');
@@ -251,6 +251,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['entry_post_thumb_views_display'] = $this->language->get('entry_post_thumb_views_display');
         $data['entry_post_thumb_review_display'] = $this->language->get('entry_post_thumb_review_display');
         $data['entry_post_thumb_read_more_display'] = $this->language->get('entry_post_thumb_read_more_display');
+        $data['entry_post_thumb_animate'] = $this->language->get('entry_post_thumb_animate');
 
         $data['entry_review_guest'] = $this->language->get('entry_review_guest');
         $data['entry_review_social_login'] = $this->language->get('entry_review_social_login');
@@ -271,6 +272,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['entry_review_thumb_image_user_display'] = $this->language->get('entry_review_thumb_image_user_display');
 
         $data['entry_author_layout'] = $this->language->get('entry_author_layout');
+        $data['entry_author_layout_type'] = $this->language->get('entry_author_layout_type');
         $data['entry_author_post_page_limit'] = $this->language->get('entry_author_post_page_limit');
         $data['entry_author_image_size'] = $this->language->get('entry_author_image_size');
         $data['entry_author_category_display'] = $this->language->get('entry_author_category_display');
@@ -327,6 +329,8 @@ class ControllerExtensionModuleDBlogModule extends Controller {
 
         $data['cols']  = array(1,2,3,4,6);
         $data['themes'] = $this->model_extension_module_d_blog_module->getThemes();
+        $data['layout_types'] = $this->model_extension_module_d_blog_module->getLayouts();
+        $data['animations'] = $this->config->get('d_blog_module_animations');
         
         //select
         $data['categories'][] = array('category_id' => 0, 'title' => $this->language->get('text_undefined'));

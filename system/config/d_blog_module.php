@@ -10,6 +10,7 @@ $_['d_blog_module_setting'] = array(
     'category' => array(
         'main_category_id' => 1,
         'layout' => array(0 => 2),
+        'layout_type' => 'grid',
         'post_page_limit' => 7,
         'image_display' => 1,
         'image_width' => 1200,
@@ -31,12 +32,16 @@ $_['d_blog_module_setting'] = array(
         'author_display' => 1,
         'date_display' => 1,
         'date_format' => 'F d, Y',
+        'date_format_day' => 'd',
+        'date_format_month' => 'F',
+        'date_format_year' => 'Y',
         'rating_display' => 1,
         'description_display' => 1,
         'tag_display' => 1,
         'views_display' => 1,
         'review_display' => 1,
         'read_more_display' => 1,
+        'animate' => 'slideInUp'
         ),
     'post' => array(
         'image_display' => 1,
@@ -82,6 +87,7 @@ $_['d_blog_module_setting'] = array(
         ),
     'author' => array(
         'layout' => array(0 => 2),
+        'layout_type' => 'grid',
         'post_page_limit' => 7,
         'image_width' => 400,
         'image_height' => 400,
@@ -101,4 +107,18 @@ $_['d_blog_module_setting'] = array(
 $_['d_blog_module_demo'] = array(
     'text' => 'basic',
     'sql' => 'd_blog_module.sql'
+);
+
+$_['d_blog_module_animations'] = array(
+    '',
+    'pulse',
+    'tada',
+    'jello',
+    'fadeIn',
+    'fadeInUp',
+    'bounce',
+    'bounceIn',
+    'zoomIn',
+    'zoomInDown',
+    'zoomInUp'
 );

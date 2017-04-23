@@ -70,28 +70,31 @@ class ControllerDBlogModulePost extends Controller {
             $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
             $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
-            if (file_exists(DIR_TEMPLATE . $this->theme . '/stylesheet/d_blog_module/d_blog_module.css')) {
-                $this->document->addStyle('catalog/view/theme/'.$this->theme.'/stylesheet/d_blog_module/d_blog_module.css');
-            } else {
-                $this->document->addStyle('catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css');
-            }
-            if (file_exists(DIR_TEMPLATE . $this->theme . '/stylesheet/d_blog_module/bootstrap.css')) {
-                $this->document->addStyle('catalog/view/theme/'.$this->theme.'/stylesheet/d_blog_module/bootstrap.css');
-            } else {
-                $this->document->addStyle('catalog/view/theme/default/stylesheet/d_blog_module/bootstrap.css');
+            $styles = array(
+                'd_blog_module/d_blog_module.css',
+                'd_blog_module/bootstrap.css',
+                'd_blog_module/theme/'.$this->setting['theme'].'.css'
+            );
+
+            foreach($styles as $style){
+                if (file_exists(DIR_TEMPLATE . $this->theme . '/stylesheet/'.$style)) {
+                    $this->document->addStyle('catalog/view/theme/'.$this->theme.'/stylesheet/'.$style);
+                } else {
+                    $this->document->addStyle('catalog/view/theme/default/stylesheet/'.$style);
+                }
             }
 
-            $this->document->addStyle('catalog/view/theme/default/stylesheet/d_blog_module/theme/'.$this->setting['theme'].'.css');
+            $scripts = array(
+                'd_blog_module/main.js',
+                'd_blog_module/post.js'
+            );
 
-            if (file_exists(DIR_TEMPLATE . $this->theme . '/javascript/d_blog_module/main.js')) {
-                $this->document->addScript('catalog/view/theme/'.$this->theme.'/javascript/d_blog_module/main.js');
-            } else {
-                $this->document->addScript('catalog/view/theme/default/javascript/d_blog_module/main.js');
-            }
-            if (file_exists(DIR_TEMPLATE . $this->theme . '/javascript/d_blog_module/post.js')) {
-                $this->document->addScript('catalog/view/theme/'.$this->theme.'/javascript/d_blog_module/post.js');
-            } else {
-                $this->document->addScript('catalog/view/theme/default/javascript/d_blog_module/post.js');
+            foreach($scripts as $script){
+                if (file_exists(DIR_TEMPLATE . $this->theme . '/javascript/'.$script)) {
+                    $this->document->addScript('catalog/view/theme/'.$this->theme.'/javascript/'.$script);
+                } else {
+                    $this->document->addScript('catalog/view/theme/default/javascript/'.$script);
+                }
             }
 
             if($this->user->isLogged()){
@@ -152,7 +155,7 @@ class ControllerDBlogModulePost extends Controller {
                 $data['edit'] = $this->config->get('config_url').$this->setting['dir_admin'].'/index.php?route=d_blog_module/post/edit&post_id='.$post_id . '&token='.$this->session->data['token'];
             }
 
-// Categories
+            // Categories
             $categories = $this->model_d_blog_module_category->getCategoryByPostId($post_id);
             $data['categories'] = array();
             foreach ($categories as $category) {
@@ -166,7 +169,7 @@ class ControllerDBlogModulePost extends Controller {
                 $parent_category = $categories[0];
             }
 
-//Videos
+            //Videos
             $post_videos = $this->model_d_blog_module_post->getPostVideos($post_id);
             $data['post_videos'] = array();
             foreach ($post_videos as $video) {
@@ -394,6 +397,9 @@ class ControllerDBlogModulePost extends Controller {
                 $data['image_alt'] = (!empty($post['image_alt'])) ?  $post['image_title'] : $data['title'];
                 $data['date_published'] = date($this->setting['post_thumb']['date_format'], strtotime($post['date_published']));
                 $data['date_published_short'] = date($this->language->get('date_format_short'), strtotime($post['date_published']));
+                $data['date_published_day'] = date($this->setting['post_thumb']['date_format_day'], strtotime($post['date_published']));
+                $data['date_published_month'] = date($this->setting['post_thumb']['date_format_month'], strtotime($post['date_published']));
+                $data['date_published_year'] = date($this->setting['post_thumb']['date_format_year'], strtotime($post['date_published']));
                 $data['href'] = $this->url->link('d_blog_module/post', 'post_id=' . $post_id, 'SSL');
 
                 return $data;

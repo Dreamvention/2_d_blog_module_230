@@ -30,6 +30,19 @@ class ModelExtensionModuleDBlogModule extends Model {
         return $result;
     }
 
+    public function getLayouts(){
+        $dir = DIR_CONFIG.'d_blog_module_layout';
+        $files = scandir($dir);
+        $result = array();
+        foreach($files as $file){
+            if(strlen($file) > 6 && strpos( $file, '.php')){
+                $this->config->load('d_blog_module_layout/'.substr($file, 0, -4));
+                $result[] = $this->config->get('d_blog_module_layout');
+            }
+        }
+        return $result;
+    }
+
     /*
      *  Format the link to work with ajax requests
      */

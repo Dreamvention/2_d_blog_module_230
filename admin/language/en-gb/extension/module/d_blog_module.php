@@ -42,7 +42,7 @@ $_['help_range_type']                           = '(Optional, leave empty if not
 $_['help_incremental_yes']                      = '(Update and / or add data)';
 $_['help_incremental_no']                       = '(Remove all the old data before importing)';
 $_['help_review_social_login']                  = '<h4>Social login</h4><p>If you have social login installed, you can allow visitors to write comments in posts by registrting through their social network account. You can <a href="http://www.opencart.com/index.php?route=extension/extension/info&extension_id=16711" target="_blank">upgrade social login here</a></p>';
-$_['help_style_short_description_display']      = '<h4>How it works?</h4><p>If you want ещ use any style for your post short description, turn on this switch. Be careful, this option disables the settings of "Set short description length" and will include html tags in short description.</p>';
+$_['help_style_short_description_display']      = '<h4>How it works?</h4><p>If you want to use any style for your post short description, turn on this switch. Be careful, this option disables the settings of "Set short description length" and will include html tags in short description.</p>';
 
 // Entry
 $_['entry_export_type']                         = 'Select which data you want to export:';
@@ -54,7 +54,8 @@ $_['entry_status']                              = 'Status';
 $_['entry_theme']                               = 'Theme';
 $_['entry_category_main_category_id']           = 'Home category';
 $_['entry_category_image_display']              = 'Show main category image';
-$_['entry_category_layout']                     = 'Layout';
+$_['entry_category_layout']                     = 'Grid layout';
+$_['entry_category_layout_type']                = 'Layout type';
 $_['entry_category_post_page_limit']            = 'Post page limit';
 $_['entry_category_image_size']                 = 'Image size';
 $_['entry_category_sub_category_display']       = 'Display sub category';
@@ -93,6 +94,7 @@ $_['entry_post_thumb_tag_display']              = 'Display tag';
 $_['entry_post_thumb_views_display']            = 'Display views';
 $_['entry_post_thumb_review_display']           = 'Display reviews';
 $_['entry_post_thumb_read_more_display']        = 'Display read more';
+$_['entry_post_thumb_animate']                  = 'Animate post thumb appearance';
 
 $_['entry_review_guest']                        = 'Allow guest reviews';
 $_['entry_review_social_login']                 = 'Social login';
@@ -104,17 +106,17 @@ $_['entry_review_image_limit']                  = 'Number of pictures in review'
 $_['entry_review_image_user_display']           = 'Display images in review';
 $_['entry_review_upload_image_size']            = 'Size upload image';
 
-
 $_['entry_review_thumb_image_size']             = 'Profile image size';
 $_['entry_review_thumb_no_image']               = 'Set no image url link';
 $_['entry_review_thumb_date_display']           = 'Display date';
 $_['entry_review_thumb_image_display']          = 'Display profile image';
 $_['entry_review_thumb_rating_display']         = 'Display rating';
 $_['entry_review_thumb_image_user_display']     = 'Display add images in review';
-
 $_['entry_review_user_image_size']              = 'Uploaded image size';
 $_['entry_review_image_user_display']           = 'Add images to review';
-$_['entry_author_layout']                       = 'Layout';
+
+$_['entry_author_layout']                       = 'Grid Layout';
+$_['entry_author_layout_type']                  = 'Layout type';
 $_['entry_author_post_page_limit']              = 'Post page limit';
 $_['entry_author_image_size']                   = 'Image size';
 $_['entry_author_category_display']             = 'Display category';

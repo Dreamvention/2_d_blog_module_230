@@ -63,7 +63,22 @@
         "system/config/d_visual_designer_route/d_blog_module_category.php",
         "system/config/d_visual_designer_route/d_blog_module_post.php",
         "system/config/d_visual_designer_route/d_blog_module_author.php",
+
+        "system/config/d_blog_module_layout/grid.php",
+
+        "catalog/view/theme/default/template/d_blog_module/author.twig",
+        "catalog/view/theme/default/template/d_blog_module/category.twig",
+        "catalog/view/theme/default/template/d_blog_module/layout_grid.twig",
+        "catalog/view/theme/default/template/d_blog_module/post.twig",
+        "catalog/view/theme/default/template/d_blog_module/post_thumb.twig",
+        "catalog/view/theme/default/template/d_blog_module/review.twig",
+        "catalog/view/theme/default/template/d_blog_module/review_thumb.twig",
+        "catalog/view/theme/default/template/d_blog_module/search.twig",
         
+        "catalog/view/theme/default/javascript/d_blog_module/category.js",
+        "catalog/view/theme/default/javascript/d_blog_module/main.js",
+        "catalog/view/theme/default/javascript/d_blog_module/post.js",
+        "catalog/view/theme/default/javascript/d_blog_module/review.js",
         "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.scss",
         "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css.map",
         "catalog/view/theme/default/stylesheet/d_blog_module/d_blog_module.css",
@@ -84,8 +99,6 @@
         "catalog/controller/d_blog_module",
         "catalog/model/d_blog_module",
         "catalog/language/en-gb/d_blog_module",
-        "catalog/view/theme/default/template/d_blog_module",
-        "catalog/view/theme/default/javascript/d_blog_module",
 
         "image/catalog/d_blog_module/category",
         "image/catalog/d_blog_module/post"
@@ -93,7 +106,7 @@
     "changelog": [
         {
             "version":"2.2.2",
-            "change": "1. Visual Designer update. 2. Minor bug fixes"
+            "change": "1. Visual Designer update. 2. Added layout types 3. Added post thumb animation 4. Minor bug fixes."
         },
         {
             "version":"2.2.1",

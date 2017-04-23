@@ -9,24 +9,7 @@
                  <h1 class="h1 title">{{heading_title}}</h1>
             </div>
             {% if posts %}
-                <div class="bm-posts">
-                    <div class="row">
-                        {% for post in posts %}
-                            {% if post.row %}
-                                </div><div class="row">
-                            {% endif %}
-                            <div class="col-md-{{post.col}}">
-                                {% include template('d_blog_module/post_thumb') with post %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="bm-pagination">
-                        <div class="row">
-                            <div class="col-sm-6 text-left">{{pagination}}</div>
-                            <div class="col-sm-6 text-right">{{results}}</div>
-                        </div>
-                    </div>
-                </div>
+                {% include template('/d_blog_module/layout_grid') with posts %}
             {% endif %}
             {% if not posts %}
                 <p class="bm-empty">{{text_empty}}</p>
