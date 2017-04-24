@@ -36,7 +36,7 @@
             {% endif %}
 
             {% if posts %}
-                {% include template('/d_blog_module/layout_grid') with posts %}
+                {% include template(layout_template) with posts %}
             {% endif %}
 
             {% if not posts %}
