@@ -75,6 +75,7 @@
         "catalog/view/theme/default/template/d_blog_module/review_thumb.twig",
         "catalog/view/theme/default/template/d_blog_module/search.twig",
         
+        "catalog/view/theme/default/javascript/d_blog_module/author.js",
         "catalog/view/theme/default/javascript/d_blog_module/category.js",
         "catalog/view/theme/default/javascript/d_blog_module/main.js",
         "catalog/view/theme/default/javascript/d_blog_module/post.js",

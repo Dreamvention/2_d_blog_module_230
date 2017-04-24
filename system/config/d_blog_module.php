@@ -111,6 +111,7 @@ $_['d_blog_module_demo'] = array(
 
 $_['d_blog_module_animations'] = array(
     '',
+    'slideInUp',
     'pulse',
     'tada',
     'jello',
