@@ -56,17 +56,6 @@
   content: ", "; }
 .bm .tag-style a:last-child:after, .bm .bm-post-content .tag a:last-child:after, .bm .post-thumb .post-thumb-body .tag a:last-child:after {
   content: ""; }
-.bm .bm-category-info .image,
-.bm .bm-author-info .image {
-  max-width: 100%;
-  float: none;
-  margin-right: 0px; }
-.bm .bm-category-info .description,
-.bm .bm-author-info .description {
-  margin-top: 15px;
-  display: block;
-  font-size: 14px;
-  line-height: 24px; }
 .bm .bm-post-info .category {
   margin: 0px;
   margin-top: 10px;

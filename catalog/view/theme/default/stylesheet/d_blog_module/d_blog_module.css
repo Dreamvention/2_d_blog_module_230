@@ -14,7 +14,8 @@
     .bm .bm-author-info .image {
       float: left;
       max-width: 30%;
-      margin-right: 20px; }
+      margin-right: 20px;
+      margin-bottom: 20px; }
   .bm .bm-categories {
     margin-bottom: 20px;
     padding-bottom: 20px; }
