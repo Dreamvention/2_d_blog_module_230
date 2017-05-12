@@ -51,6 +51,10 @@
     margin-right: 15px; }
   .bm .post-nav {
     margin-top: 20px; }
+  .bm .bm-author:after {
+    content: "";
+    display: table;
+    clear: both; }
   .bm .bm-reviews .bm-pagination {
     margin-top: 20px; }
   .bm .bm-reviews .review .media-left .image img {
