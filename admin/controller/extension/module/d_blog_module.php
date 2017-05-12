@@ -62,7 +62,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $this->load->model('d_shopunity/setting');
 
         //save post
-        if (($this->request->server['REQUEST_METHOD'] == 'POST') ) {
+        if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 
             $this->model_setting_setting->editSetting($this->codename, $this->request->post, $this->store_id);
             $this->uninstallEvents();
@@ -386,16 +386,6 @@ class ControllerExtensionModuleDBlogModule extends Controller {
             return false;
         }
 
-        if(empty($this->request->post[$this->codename.'_setting']['select'])){
-            $this->error['select'] = $this->language->get('error_select');
-            return false;
-        }
-
-        if(empty($this->request->post[$this->codename.'_setting']['text'])){
-            $this->error['text'] = $this->language->get('error_text');
-            return false;
-        }
-
         return true;
     }
 
@@ -456,14 +446,14 @@ class ControllerExtensionModuleDBlogModule extends Controller {
             $config = $this->request->get['config'];
         }
 
-        $this->config->load($config);
+        $this->config->load( 'd_blog_module_demo/'.$config);
         $data = $this->config->get($config.'_demo');
 
         $this->load->language($this->route);
         $this->load->model('extension/module/d_blog_module');
         $setting = $this->model_extension_module_d_blog_module->getConfigData($this->codename, $this->codename.'_setting', $this->store_id, $this->config_file);
         
-        $result = $this->model_extension_module_d_blog_module->installDemoData(DIR_APPLICATION.$data['sql']);
+        $result = $this->model_extension_module_d_blog_module->installDemoData(DIR_CONFIG.'d_blog_module_demo/'.$data['sql']);
 
         if(!empty($data['permission']) && is_array($data['permission'])){
             $this->load->model('user/user_group');

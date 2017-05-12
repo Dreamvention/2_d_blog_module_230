@@ -104,10 +104,6 @@ $_['d_blog_module_setting'] = array(
     )
         //'support' => 1,
 );
-$_['d_blog_module_demo'] = array(
-    'text' => 'basic',
-    'sql' => 'd_blog_module.sql'
-);
 
 $_['d_blog_module_animations'] = array(
     '',

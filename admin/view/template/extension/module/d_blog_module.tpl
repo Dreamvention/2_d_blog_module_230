@@ -98,26 +98,30 @@
                             <div class="tab-body">
                                 <?php if (!${$codename.'_status'}) { ?>
 
-                                <img src="view/image/d_blog_module/welcome.png" class="img-responsive" /><br/>
-                                <?php foreach($demos as $demo){ ?>
+                                <img src="view/image/d_blog_module/welcome.jpg" class="img-responsive" /><br/>
+
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="install_demo_data"><?php echo $entry_install_demo_data; ?> <?php echo $demo['text']; ?></label>
-                                    <div class="col-sm-2 ">
-                                        <a data-href="<?php echo $demo['install']; ?>" class="btn btn-warning btn-block install-demo-data"><i class="fa fa-refresh"></i> <?php echo $button_install_demo_data; ?> <?php echo $demo['text']; ?></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="notification-install-demo-data"></div>
-                                    </div>
-                                </div>
-                                <?php } ?>
-                                <div class="form-group">
-                                    <div class="col-sm-10 col-sm-offset-2">
-                                        <div class="bs-callout bs-callout-warning  ">
+                                    <div class="col-sm-12">
+                                        <div class="bs-callout bs-callout-info  ">
                                             <?php echo $help_install_demo_data; ?>
                                         </div>
                                     </div>
                                 </div>
+                                <?php foreach($demos as $demo){ ?>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="install_demo_data"><?php echo $entry_install_demo_data; ?> <?php echo $demo['text']; ?></label>
+                                    <div class="col-sm-10 notification-install-demo-data">
+                                        <div class="alert alert-warning">
+                                            <div class="row">
+                                                <div class="col-md-10"><?php echo $demo['description']; ?> </div>
+                                                <div class="col-md-2"><a data-href="<?php echo $demo['install']; ?>" class="btn btn-warning btn-block install-demo-data"><?php echo $button_install_demo_data; ?> <?php echo $demo['text']; ?></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php } ?>
+
+                                <?php }else{ ?>
                                 <div class="form-group">
                                     <div class="col-lg-3 col-md-3 col-sm-6">
                                         <a href="<?php echo $menu_post; ?>">
@@ -157,7 +161,7 @@
                                         </a>
                                     </div>
                                 </div>
-
+                                <?php } ?>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input_status"><?php echo $entry_status; ?></label>
                                     <div class="col-sm-10">
@@ -1039,7 +1043,7 @@
 
     $('body').on('click', '.install-demo-data', function(){
         var install = $(this).data('href');
-        var $notification = $(this).parent().parent().find('.notification-install-demo-data');
+        var $notification = $(this).parents('.notification-install-demo-data');
         bootbox.confirm("<?php echo $warning_install_demo_data; ?>", function(result) {
             console.log('');
             

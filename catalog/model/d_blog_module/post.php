@@ -233,7 +233,9 @@ class ModelDBlogModulePost extends Model {
         . "WHERE p.post_id = '" . $post_id . "' "
         . "AND p.status = '1' "
         . "AND pd.language_id = '" . (int) $this->config->get('config_language_id') . "' ";
-
+        
+        $sql .= "GROUP BY p.post_id ";
+        
         $query = $this->db->query($sql);
 
         if(empty($query->row['post_id'])){

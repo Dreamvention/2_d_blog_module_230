@@ -201,7 +201,6 @@ INSERT INTO `oc_bm_post_to_store` (`post_id`, `store_id`) VALUES ('11', '0');
 TRUNCATE TABLE `oc_bm_post_video`;
 
 
-
 TRUNCATE TABLE `oc_bm_review`;
 
 INSERT INTO `oc_bm_review` (`review_id`, `post_id`, `reply_to_review_id`, `language_id`, `customer_id`, `guest_email`, `image`, `author`, `description`, `rating`, `status`, `date_added`, `date_modified`) VALUES ('1', '1', '0', '0', '0', 'dmitriyzhuk@gmail.com', '', 'admin', 'Lorem ipsum dolor sit amet, justo aliquid reformidans ea vel, vim porro dictas et, ut elit partem invidunt vis. Saepe melius complectitur eum ea', '5', '1', '2016-04-14 14:40:46', '2016-04-27 23:02:07');

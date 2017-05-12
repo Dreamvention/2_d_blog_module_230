@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.2.3",
+    "version": "2.2.4",
     "name": "Blog module",
     "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "extension/module/d_blog_module",
@@ -45,7 +45,6 @@
     "files": [
         "system/mbooth/extension/d_blog_module.json",
         "system/config/d_blog_module.php",
-        "admin/d_blog_module.sql",
 
         "admin/controller/extension/module/d_blog_module.php",
         "admin/controller/event/d_blog_module.php",
@@ -65,6 +64,8 @@
         "system/config/d_visual_designer_route/d_blog_module_author.php",
 
         "system/config/d_blog_module_layout/grid.php",
+        "system/config/d_blog_module_demo/d_blog_module.php",
+        "system/config/d_blog_module_demo/d_blog_module.sql",
 
         "catalog/view/theme/default/template/d_blog_module/author.twig",
         "catalog/view/theme/default/template/d_blog_module/category.twig",
@@ -106,6 +107,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.2.4",
+            "change": "1. Blog setup refactor."
+        },
         {
             "version":"2.2.3",
             "change": "1. Updated styles."
