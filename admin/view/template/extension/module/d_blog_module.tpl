@@ -100,11 +100,14 @@
 
                                 <img src="view/image/d_blog_module/welcome.jpg" class="img-responsive" /><br/>
 
-                                <div class="form-group">
-                                    <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="bs-callout bs-callout-info  ">
                                             <?php echo $help_install_demo_data; ?>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <iframe class="pull-right" width="100%" height="350" src="https://www.youtube.com/embed/-YllMGPu-yw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                                     </div>
                                 </div>
                                 <?php foreach($demos as $demo){ ?>
