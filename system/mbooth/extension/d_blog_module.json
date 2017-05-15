@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.2.4",
+    "version": "2.2.5",
     "name": "Blog module",
     "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "extension/module/d_blog_module",
@@ -107,6 +107,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.2.5",
+            "change": "1. hotfix: update."
+        },
         {
             "version":"2.2.4",
             "change": "1. Blog setup refactor."
