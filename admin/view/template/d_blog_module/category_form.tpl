@@ -52,7 +52,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="category_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" class="d_visual_designer" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['description'] : ''; ?></textarea>
+                      <textarea name="category_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" class="d_visual_designer summernote" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['description'] : ''; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group required">
@@ -194,11 +194,10 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
-$('#input-description<?php echo $language['language_id']; ?>').summernote({
-	height: 300
-});
+// $('#input-description<?php echo $language['language_id']; ?>').summernote({ height: 300 });
 <?php } ?>
 //--></script>
   <script type="text/javascript"><!--

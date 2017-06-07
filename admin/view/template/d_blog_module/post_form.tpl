@@ -63,7 +63,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                                         <div class="col-sm-10">
-                                            <textarea name="post_description[<?php echo $language['language_id']; ?>][description]" class="d_visual_designer" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>"><?php echo isset($post_description[$language['language_id']]) ? $post_description[$language['language_id']]['description'] : ''; ?></textarea>
+                                            <textarea name="post_description[<?php echo $language['language_id']; ?>][description]" class="d_visual_designer summernote" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>"><?php echo isset($post_description[$language['language_id']]) ? $post_description[$language['language_id']]['description'] : ''; ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group required">
@@ -369,12 +369,13 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
 <script type="text/javascript"><!--
             <?php foreach ($languages as $language) { ?>
                 <?php if($style_short_description_display){?>
                     $("#input-short-description<?php echo $language['language_id']; ?>").summernote({ height: 100 });
                 <?php } ?>
-                $("#input-description<?php echo $language['language_id']; ?>").summernote({ height: 300 });
+                //$("#input-description<?php echo $language['language_id']; ?>").summernote({ height: 300 });
                 <?php } ?>
                 //--></script>
                 <script type="text/javascript"><!--

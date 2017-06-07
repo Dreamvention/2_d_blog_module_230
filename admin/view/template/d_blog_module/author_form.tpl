@@ -72,7 +72,7 @@
                     <div class="form-group required">
                       <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="author_description[<?php echo $language['language_id']; ?>][name]" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" value="<?php echo isset($author_description[$language['language_id']]) ? $author_description[$language['language_id']]['name'] : ''; ?>">
+                        <input type="text" class="form-control summernote" name="author_description[<?php echo $language['language_id']; ?>][name]" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" value="<?php echo isset($author_description[$language['language_id']]) ? $author_description[$language['language_id']]['name'] : ''; ?>">
                         <?php if (isset($error_name[$language['language_id']])) { ?>
                         <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
                         <?php  } ?>
@@ -175,12 +175,13 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
   <script type="text/javascript">
     $('#language a:first').tab('show');
     //--></script>
         <script type="text/javascript"><!--
           <?php foreach ($languages as $language) { ?>
-            $("#input-description<?php echo $language['language_id']; ?>").summernote({ height: 300 });
+            //$("#input-description<?php echo $language['language_id']; ?>").summernote({ height: 300 });
             <?php } ?>
             //--></script>
             <script type="text/javascript">
