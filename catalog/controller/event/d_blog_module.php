@@ -96,7 +96,6 @@ class ControllerEventDBlogModule extends Controller {
 
             $this->load->model('d_blog_module/post');
             $layout_id = $this->model_d_blog_module_post->getPostLayoutId($post_id);
-            echo $layout_id;
             if($layout_id){
                 $output = $layout_id;
             }
