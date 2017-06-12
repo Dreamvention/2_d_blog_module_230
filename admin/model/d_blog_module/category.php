@@ -56,6 +56,16 @@ class ModelDBlogModuleCategory extends Model {
                     store_id = '" . (int) $store_id . "'");
             }
         }
+
+        $this->db->query("DELETE FROM " . DB_PREFIX . "bm_category_to_layout WHERE category_id = '" . (int)$category_id . "'");
+        if (isset($data['category_layout'])) {
+            foreach ($data['category_layout'] as $store_id => $layout_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "bm_category_to_layout SET 
+                    category_id = '" . (int)$category_id . "', 
+                    store_id = '" . (int)$store_id . "', 
+                    layout_id = '" . (int)$layout_id . "'");
+            }
+        }
         // if (!empty($data['keyword'])) {
         //     $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias
         //         SET query = 'bm_category_id=" . (int) $category_id . "',

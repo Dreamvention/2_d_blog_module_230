@@ -429,6 +429,9 @@ class ControllerExtensionModuleDBlogModule extends Controller {
 
         $this->model_module_d_event_manager->addEvent($this->codename, 'admin/model/localisation/language/addLanguage/after', 'event/d_blog_module/model_localisation_language_addLanguage_after');
         $this->model_module_d_event_manager->addEvent($this->codename, 'admin/model/localisation/language/deleteLanguage/after', 'event/d_blog_module/model_localisation_language_deleteLanguage_after');
+
+        $this->model_module_d_event_manager->addEvent($this->codename, 'catalog/model/design/layout/getLayout/after', 'event/d_blog_module/model_design_layout_getLayout_after');
+        
     }
 
     public function uninstallEvents(){

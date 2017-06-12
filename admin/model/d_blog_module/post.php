@@ -137,6 +137,8 @@ class ModelDBlogModulePost extends Model {
             . " WHERE post_id = '" . (int) $post_id . "'");
         $this->db->query("DELETE FROM " . DB_PREFIX . "bm_post_to_store "
             . " WHERE post_id = '" . (int) $post_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "bm_post_to_layout "
+            . " WHERE post_id = '" . (int) $post_id . "'");
 
 
         if (isset($data['post_category'])) {
@@ -176,8 +178,6 @@ class ModelDBlogModulePost extends Model {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "bm_post_to_store SET post_id = '" . (int) $post_id . "', store_id = '" . (int) $store_id . "'");
             }
         }
-
-        $this->db->query("DELETE FROM " . DB_PREFIX . "bm_post_to_layout WHERE post_id LIKE '" . (int)$post_id . ":%'");
 
         if (isset($data['post_layout'])) {
             foreach ($data['post_layout'] as $store_id => $layout_id) {

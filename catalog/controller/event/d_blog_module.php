@@ -77,4 +77,29 @@ class ControllerEventDBlogModule extends Controller {
             $data['description'] = html_entity_decode($data['description'], ENT_QUOTES, 'UTF-8');
         }
     }
+
+    public function model_design_layout_getLayout_after(&$view, &$data, &$output)
+    {
+        if(isset($this->request->get['category_id'])){
+            $category_id = $this->request->get['category_id'];
+
+            $this->load->model('d_blog_module/post');
+            $layout_id = $this->model_d_blog_module_category->getCategoryLayoutId($category_id);
+            if($layout_id){
+                $output = $layout_id;
+            }
+        }
+
+        if(isset($this->request->get['post_id'])){
+
+            $post_id = $this->request->get['post_id'];
+
+            $this->load->model('d_blog_module/post');
+            $layout_id = $this->model_d_blog_module_post->getPostLayoutId($post_id);
+            echo $layout_id;
+            if($layout_id){
+                $output = $layout_id;
+            }
+        }
+    }
 }

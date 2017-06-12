@@ -155,6 +155,18 @@ class ModelDBlogModulePost extends Model {
         return $query->rows;
     }
 
+    public function getPostLayoutId($post_id) {
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "bm_post_to_layout "
+            . "WHERE post_id = '" . (int) $post_id
+            . "' AND store_id = '" . (int) $this->config->get('config_store_id') . "'");
+
+        if ($query->num_rows) {
+            return $query->row['layout_id'];
+        } else {
+            return 0;
+        }
+    }
+
     public function getTotalPosts($data = array()){
         $sql = "SELECT COUNT(DISTINCT p.post_id) AS total ";
 
