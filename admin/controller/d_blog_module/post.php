@@ -873,10 +873,18 @@ class ControllerDBlogModulePost extends Controller {
             $url .= '&filter_date_published=' . $this->request->get['filter_date_published'];
         }
 
-        if (isset($this->request->get['order']) && $this->request->get['order'] == 'ASC') {
-            $url .= '&order=DESC';
+        if (isset($this->request->get['order']) && $this->request->get['order'] == 'DESC') {
+            if($this->request->get['route'] == 'd_blog_module/post'){
+                $url .= '&order=ASC';
+            }else{
+                $url .= '&order=DESC';
+            }
         } else {
-            $url .= '&order=ASC';
+            if($this->request->get['route'] == 'd_blog_module/post'){
+                $url .= '&order=DESC';
+            }else{
+                $url .= '&order=ASC';
+            }
         }
 
         if (isset($this->request->get['page'])) {
