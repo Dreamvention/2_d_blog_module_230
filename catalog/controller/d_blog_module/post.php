@@ -242,6 +242,13 @@ class ControllerDBlogModulePost extends Controller {
             $review_total_info = $this->model_d_blog_module_review->getTotalReviewsByPostId($post_id);
             $data['rating'] = (int) $review_total_info['rating'];
 
+            if(isset($this->request->get['format'])){
+                $format = $this->request->get['format'];
+                if($this->format($format, $data)){
+                    return false;
+                }
+            }
+            
             if($post_info['review_display'] == 1){
                 $data['review_display'] = true;
             }elseif($post_info['review_display'] == 2){
@@ -250,13 +257,6 @@ class ControllerDBlogModulePost extends Controller {
                 $data['review_display'] = $this->setting['post']['review_display'];
             }
             $data['review'] = $this->load->controller('d_blog_module/review');
-
-            if(isset($this->request->get['format'])){
-                $format = $this->request->get['format'];
-                if($this->format($format, $data)){
-                    return false;
-                }
-            }
 
             //next and prev posts
             $nav_category_id = 0;
