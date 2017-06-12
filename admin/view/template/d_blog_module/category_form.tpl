@@ -28,7 +28,8 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
-												<li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+            <li><a href="#tab-setting" data-toggle="tab"><?php echo $tab_setting; ?></a></li>
+            <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active in" id="tab-general">
@@ -147,7 +148,178 @@
                 </div>
               </div>
             </div>
-												<div class="tab-pane" id="tab-design">
+            <div class="tab-pane" id="tab-setting">
+                <div class="tab-body">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input_category_custom"><?php echo $entry_category_custom; ?></label>
+                        <div class="col-sm-10">
+                            <input type="hidden" name="custom" value="0" />
+                            <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>" id="input_category_custom" name="custom" <?php echo ($custom) ? 'checked="checked"':'';?> value="1" />
+                        </div>
+                    </div><!-- //checkbox -->
+                    <div id="input_category_custom_form" <?php echo ($custom) ? '':'class="hide"';?>>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_category_layout_type"><?php echo $entry_category_layout_type; ?></label>
+                            <div class="col-sm-10">
+                                <div class="btn-group colors" data-toggle="buttons">
+                                    <?php  foreach( $layout_types as $layout_type){ ?>
+                                    <label class="btn btn-default <?php if(isset($setting['layout_type']) && $layout_type['id'] == $setting['layout_type']) { ?>active<?php } ?>"
+                                     data-toggle="tooltip" data-html="true" title="<?php echo htmlspecialchars($layout_type['description']); ?>">
+                                        <input type="radio" name="setting[layout_type]" value="<?php echo $layout_type['id']; ?>" autocomplete="off" <?php if(isset($setting['layout_type']) && $layout_type['id'] == $setting['layout_type']) { ?>checked<?php } ?>> <?php echo $layout_type['name']; ?>
+                                    </label>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div><!-- //status -->
+
+
+
+                        <div class="form-group" id="category_layout">
+                            <label class="col-sm-2 control-label" for="input_category_layout"><?php echo $entry_category_layout; ?></label>
+                            <div class="col-sm-10 ">
+                                <div class="input">
+
+                                <?php  foreach( $setting['layout'] as $layout){ ?>
+
+                                <div class="input-group m-b">
+                                    <select name="setting[layout][]"  class="form-control">
+                                        <?php foreach ($cols as $col) { ?>
+                                        <option value="<?php echo $col; ?>" <?php if ($layout == $col) { ?> selected="selected" <?php } ?>><?php echo $col; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default remove" ><?php echo $button_remove; ?></button>
+                                    </span>
+                                </div><!-- /input-group -->
+
+                                <?php  } ?>
+                                </div>
+                                <button class="btn btn-default add m-b"><?php echo $button_add; ?></button>
+                                <div class="bs-callout bs-callout-warning">
+                                    <?php echo $help_layout; ?>
+                                </div>
+                            </div>
+                            <script type="text" id="template_input_category_layout">
+                                <div class="input-group m-b">
+                                        <select name="setting[layout][]" class="form-control">
+                                            <?php foreach ($cols as $col) { ?>
+                                               <option value="<?php echo $col; ?>"><?php echo $col; ?></option>
+                                            <?php } ?>
+                                        </select>
+
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default remove" ><?php echo $button_remove; ?></button>
+                                      </span>
+                                </div>
+                            </script>
+                            <script>
+                            var $category_layout = $('#category_layout');
+                            $(document).on('click', '#category_layout .add', function(e){
+
+                                var html = $('#template_input_category_layout').html();
+                                $category_layout.find('.input').append(html);
+                                e.preventDefault();
+                            })
+                            $(document).on('click', '#category_layout .remove', function(e){
+                                $(this).parents('.input-group').remove()
+                                e.preventDefault();
+                            })
+
+                            </script>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_text"><?php echo $entry_category_post_page_limit; ?></label>
+                            <div class="col-sm-10">
+                                <input type="text" name="setting[post_page_limit]" value="<?php echo $setting['post_page_limit']; ?>" placeholder="<?php echo $entry_category_post_page_limit; ?>"  class="form-control" />
+                            </div>
+                        </div><!-- //post_page_limit -->
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_image_display; ?></label>
+                            <div class="col-sm-10">
+                                <input type="hidden" name="setting[image_display]" value="0" />
+                                <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>" id="input_category_image_display" name="setting[image_display]" <?php echo ($setting['image_display']) ? 'checked="checked"':'';?> value="1" />
+                            </div>
+                        </div><!-- //checkbox -->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_text"><?php echo $entry_category_image_size; ?></label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><?php echo $text_width; ?></span>
+                                    <input type="text" name="setting[image_width]" value="<?php echo $setting['image_width']; ?>" placeholder="<?php echo $text_width; ?>"  class="form-control" />
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><?php echo $text_height; ?></span>
+                                    <input type="text" name="setting[image_height]" value="<?php echo $setting['image_height']; ?>" placeholder="<?php echo $text_height; ?>"  class="form-control" />
+                                </div>
+                            </div>
+                        </div><!-- //category_image -->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_sub_category_display; ?></label>
+                            <div class="col-sm-10">
+                                <input type="hidden" name="setting[sub_category_display]" value="0" />
+                                <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>" id="input_category_sub_category_display" name="setting[sub_category_display]" <?php echo ($setting['sub_category_display']) ? 'checked="checked"':'';?> value="1" />
+                            </div>
+                        </div><!-- //checkbox -->
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_select"><?php echo $entry_category_sub_category_col; ?></label>
+                            <div class="col-sm-10">
+                                <select name="setting[sub_category_col]" id="input_category_sub_category_col" class="form-control">
+                                    <?php foreach ($cols as $col) { ?>
+                                    <option value="<?php echo $col; ?>" <?php if ($setting['sub_category_col'] == $col) { ?> selected="selected" <?php } ?>><?php echo $col; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div><!-- //select -->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_sub_category_image; ?></label>
+                            <div class="col-sm-10">
+                                <input type="hidden" name="setting[sub_category_image]" value="0" />
+                                <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>"id="input_category_sub_category_image" name="setting[sub_category_image]" <?php echo ($setting['sub_category_image']) ? 'checked="checked"':'';?> value="1" />
+                            </div>
+                        </div><!-- //checkbox -->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_sub_category_post_count; ?></label>
+                            <div class="col-sm-10">
+                                <input type="hidden" name="setting[sub_category_post_count]" value="0" />
+                                <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>" id="input_category_sub_category_post_count" name="setting[sub_category_post_count]" <?php echo ($setting['sub_category_post_count']) ? 'checked="checked"':'';?> value="1" />
+                            </div>
+                        </div><!-- //checkbox -->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_text"><?php echo $entry_category_sub_category_image_size; ?></label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><?php echo $text_width; ?></span>
+                                    <input type="text" name="setting[sub_category_image_width]" value="<?php echo $setting['sub_category_image_width']; ?>" placeholder="<?php echo $text_width; ?>" class="form-control" />
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><?php echo $text_height; ?></span>
+                                    <input type="text" name="setting[sub_category_image_height]" value="<?php echo $setting['sub_category_image_height']; ?>" placeholder="<?php echo $text_height; ?>"  class="form-control" />
+                                </div>
+                            </div>
+                        </div><!-- //category_image -->
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab-design">
               <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                   <thead>
@@ -200,8 +372,24 @@ $('#input-description<?php echo $language['language_id']; ?>').summernote({
 	height: 300
 });
 <?php } ?>
-//--></script>
-  <script type="text/javascript"><!--
+
+//checkbox
+    $(".switcher[type='checkbox']").bootstrapSwitch({
+        'onColor': 'success',
+        'labelWidth': '50',
+        'onText': '<?php echo $text_yes; ?>',
+        'offText': '<?php echo $text_no; ?>',
+    }).on('switchChange.bootstrapSwitch', function(event, state) {
+
+        if($(this).attr('id') == 'input_category_custom'){
+            if(state){
+                $('#input_category_custom_form').removeClass('hide')
+            }else{
+                 $('#input_category_custom_form').addClass('hide')
+            }
+        }
+    });
+
 $('input[name=\'path\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({

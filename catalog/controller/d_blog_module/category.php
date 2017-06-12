@@ -70,12 +70,18 @@ class ControllerDBlogModuleCategory extends Controller
         }
 
         $url = '';
-        $data['setting'] = $this->setting;
+        
         $data['category_id'] = $category_id;
 
         //category_info
         $category_info = $this->model_d_blog_module_category->getCategory($category_id);
 
+
+        if(!empty($category_info['custom'])){
+            $this->setting['category'] = array_merge($this->setting['category'], (array)$category_info['setting']);
+        }
+
+        $data['setting'] = $this->setting;
         //category
         $parents = array();
         if ($category_info) {

@@ -20,6 +20,7 @@ class ControllerDBlogModulePost extends Controller {
         $this->load->model('d_blog_module/post');
         $this->load->language('d_blog_module/post');
         $this->document->setTitle($this->language->get('heading_title'));
+        $this->model_extension_module_d_blog_module->updateTables();
         $this->getList();
     }
 

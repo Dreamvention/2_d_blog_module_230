@@ -61,6 +61,8 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $this->load->model('setting/setting');
         $this->load->model('d_shopunity/setting');
 
+        $this->model_extension_module_d_blog_module->updateTables();
+
         //save post
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 
@@ -392,7 +394,8 @@ class ControllerExtensionModuleDBlogModule extends Controller {
 
     public function install() {
         $this->load->model('extension/module/d_blog_module');
-        $this->model_extension_module_d_blog_module->createTables( );
+        $this->model_extension_module_d_blog_module->createTables();
+        $this->model_extension_module_d_blog_module->updateTables();
            
         if($this->d_shopunity){
 

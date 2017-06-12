@@ -11,7 +11,11 @@ class ModelDBlogModuleCategory extends Model {
             . "' AND cd.language_id = '" . (int) $this->config->get('config_language_id')
             . "' AND c2s.store_id = '" . (int) $this->config->get('config_store_id')
             . "' AND c.status = '1'");
+
         $result = $query->row;
+        if(!empty($result['setting'])){
+            $result['setting'] = json_decode($result['setting'], true);
+        }
 
         return $result;
     }
@@ -27,7 +31,14 @@ class ModelDBlogModuleCategory extends Model {
             . "' AND c2s.store_id = '" . (int) $this->config->get('config_store_id')
             . "'  AND c.status = '1' ORDER BY c.sort_order, LCASE(cd.title)");
 
-        return $query->rows;
+        $results = $query->rows;
+        foreach($results as $key => $result){
+            if(!empty($result['setting'])){
+                $results[$key]['setting'] = json_decode($result['setting'], true);
+            }
+        }
+       
+        return $results;
     }
     
     public function getAllCategories() {
@@ -135,7 +146,8 @@ class ModelDBlogModuleCategory extends Model {
         LEFT JOIN " . DB_PREFIX . "bm_category_description cd2 ON (cp.category_id = cd2.category_id) 
         WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' 
         AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'
-        AND cp.category_id = '".$category_id."'";
+        AND cp.category_id = '".$category_id."' 
+        GROUP BY category_id";
 
         $sql .= " ORDER BY cp.level";
         

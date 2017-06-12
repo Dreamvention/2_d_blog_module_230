@@ -1,7 +1,7 @@
 <?php
 class ControllerDBlogModuleCategory extends Controller {
 
-    private $id = 'd_blog_module';
+    private $codename = 'd_blog_module';
     private $error = array();
     private $setting = '';
     private $sub_versions = array('lite', 'light', 'free');
@@ -10,14 +10,15 @@ class ControllerDBlogModuleCategory extends Controller {
     public function __construct($registry) {
         parent::__construct($registry);
         $this->load->model('extension/module/d_blog_module');
-        $this->config_file = $this->model_extension_module_d_blog_module->getConfigFile($this->id, $this->sub_versions);
-        $this->setting = $this->model_extension_module_d_blog_module->getConfigData($this->id, $this->id.'_setting', $this->config->get('config_store_id'),$this->config_file);
+        $this->config_file = $this->model_extension_module_d_blog_module->getConfigFile($this->codename, $this->sub_versions);
+        $this->setting = $this->model_extension_module_d_blog_module->getConfigData($this->codename, $this->codename.'_setting', $this->config->get('config_store_id'),$this->config_file);
     }
 
     public function index() {
         $this->load->model('d_blog_module/category');
         $this->load->language('d_blog_module/category');
         $this->document->setTitle($this->language->get('heading_title'));
+        $this->model_extension_module_d_blog_module->updateTables();
         $this->getList();
     }
 
@@ -31,7 +32,9 @@ class ControllerDBlogModuleCategory extends Controller {
         $this->load->model('d_blog_module/category');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm('add_categories')) {
-
+            if(empty($this->request->post['custom'])){
+                $this->request->post['setting'] = '';
+            }
             $this->model_d_blog_module_category->addCategory($this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
@@ -55,6 +58,10 @@ class ControllerDBlogModuleCategory extends Controller {
         $this->load->model('d_blog_module/category');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm('edit_categories')) {
+
+            if(empty($this->request->post['custom'])){
+                $this->request->post['setting'] = '';
+            }
 
             $this->model_d_blog_module_category->editCategory($this->request->get['category_id'], $this->request->post);
 
@@ -262,6 +269,10 @@ class ControllerDBlogModuleCategory extends Controller {
     }
 
     protected function getForm() {
+        $this->document->addScript('view/javascript/d_bootstrap_switch/js/bootstrap-switch.min.js');
+        $this->document->addStyle('view/javascript/d_bootstrap_switch/css/bootstrap-switch.css');
+
+        $data['codename'] = $this->codename;
         $data['heading_title'] = $this->language->get('heading_title');
         $data['text_form'] = !isset($this->request->get['category_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
         $data['text_enabled'] = $this->language->get('text_enabled');
@@ -276,6 +287,13 @@ class ControllerDBlogModuleCategory extends Controller {
         $data['text_option_value'] = $this->language->get('text_option_value');
         $data['text_select'] = $this->language->get('text_select');
 
+        $data['text_enabled'] = $this->language->get('text_enabled');
+        $data['text_disabled'] = $this->language->get('text_disabled');
+        $data['text_yes'] = $this->language->get('text_yes');
+        $data['text_no'] = $this->language->get('text_no');
+        $data['text_width'] = $this->language->get('text_width');
+        $data['text_height'] = $this->language->get('text_height');
+
         $data['entry_name'] = $this->language->get('entry_name');
         $data['entry_description'] = $this->language->get('entry_description');
         $data['entry_meta_title'] = $this->language->get('entry_meta_title');
@@ -289,6 +307,20 @@ class ControllerDBlogModuleCategory extends Controller {
         $data['entry_status'] = $this->language->get('entry_status');
         $data['entry_layout'] = $this->language->get('entry_layout');
 
+        $data['entry_category_custom'] = $this->language->get('entry_category_custom');
+        $data['entry_category_layout'] = $this->language->get('entry_category_layout');
+        $data['entry_category_layout_type'] = $this->language->get('entry_category_layout_type');
+        $data['entry_category_main_category_id'] = $this->language->get('entry_category_main_category_id');
+        $data['entry_category_post_page_limit'] = $this->language->get('entry_category_post_page_limit');
+        $data['entry_category_image_display'] = $this->language->get('entry_category_image_display');
+        $data['entry_category_image_size'] = $this->language->get('entry_category_image_size');
+        $data['entry_category_sub_category_display'] = $this->language->get('entry_category_sub_category_display');
+        $data['entry_category_sub_category_col'] = $this->language->get('entry_category_sub_category_col');
+        $data['entry_category_sub_category_image'] = $this->language->get('entry_category_sub_category_image');
+        $data['entry_category_sub_category_post_count'] = $this->language->get('entry_category_sub_category_post_count');
+        $data['entry_category_sub_category_image_size'] = $this->language->get('entry_category_sub_category_image_size');
+
+        $data['help_layout'] = $this->language->get( 'help_layout' );
         $data['help_category'] = $this->language->get('help_category');
         $data['help_filter'] = $this->language->get('help_filter');
         $data['help_download'] = $this->language->get('help_download');
@@ -302,11 +334,13 @@ class ControllerDBlogModuleCategory extends Controller {
         $data['button_discount_add'] = $this->language->get('button_discount_add');
         $data['button_special_add'] = $this->language->get('button_special_add');
         $data['button_image_add'] = $this->language->get('button_image_add');
+        $data['button_add'] = $this->language->get('button_add');
         $data['button_remove'] = $this->language->get('button_remove');
         $data['button_recurring_add'] = $this->language->get('button_recurring_add');
 
         $data['tab_general'] = $this->language->get('tab_general');
         $data['tab_data'] = $this->language->get('tab_data');
+        $data['tab_setting'] = $this->language->get('tab_setting');
         $data['tab_design'] = $this->language->get('tab_design');
 
 
@@ -448,6 +482,18 @@ class ControllerDBlogModuleCategory extends Controller {
             $data['status'] = true;
         }
 
+        //setting
+        $data['setting'] = $this->setting['category'];
+        $data['custom'] = $category_info['custom'];
+
+        if($data['custom']){
+            $data['setting'] = array_merge($data['setting'], (array)$category_info['setting']);
+        }
+        
+        $data['cols']  = array(1,2,3,4,6);
+        $data['themes'] = $this->model_extension_module_d_blog_module->getThemes();
+        $data['layout_types'] = $this->model_extension_module_d_blog_module->getLayouts();
+
         if (isset($this->request->post['category_layout'])) {
             $data['category_layout'] = $this->request->post['category_layout'];
         } elseif (isset($this->request->get['category_id'])) {
@@ -583,9 +629,17 @@ class ControllerDBlogModuleCategory extends Controller {
         }
 
         if (isset($this->request->get['order']) && $this->request->get['order'] == 'ASC') {
-            $url .= '&order=DESC';
+            if($this->request->get['route'] == 'd_blog_module/category'){
+                $url .= '&order=DESC';
+            }else{
+                $url .= '&order=ASC';
+            }
         } else {
-            $url .= '&order=ASC';
+            if($this->request->get['route'] == 'd_blog_module/category'){
+                $url .= '&order=ASC';
+            }else{
+                $url .= '&order=DESC';
+            }
         }
 
         if (isset($this->request->get['page'])) {

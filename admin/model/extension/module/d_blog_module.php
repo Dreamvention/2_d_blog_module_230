@@ -180,7 +180,7 @@ class ModelExtensionModuleDBlogModule extends Model {
         }
     }
 
-    public function createTables() {
+    public function updateTables(){
 
         $query = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".DB_DATABASE."' AND TABLE_NAME = '" . DB_PREFIX . "customer' ORDER BY ORDINAL_POSITION");
         $result = $query->rows;
@@ -193,6 +193,56 @@ class ModelExtensionModuleDBlogModule extends Model {
             $this->db->query("ALTER TABLE " . DB_PREFIX . "customer ADD image VARCHAR( 255 )  NOT NULL");
         }
 
+        //added support for custom settings;
+        $query = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".DB_DATABASE."' AND TABLE_NAME = '" . DB_PREFIX . "bm_post' ORDER BY ORDINAL_POSITION");
+        $result = $query->rows;
+        $columns = array();
+        foreach($result as $column){
+            $columns[] = $column['COLUMN_NAME'];
+        }
+
+        if(!in_array('custom', $columns)){
+            $this->db->query("ALTER TABLE " . DB_PREFIX . "bm_post ADD custom INT( 1 ) DEFAULT 0");
+        }
+
+        if(!in_array('setting', $columns)){
+            $this->db->query("ALTER TABLE " . DB_PREFIX . "bm_post ADD setting TEXT NOT NULL");
+        }
+
+        $query = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".DB_DATABASE."' AND TABLE_NAME = '" . DB_PREFIX . "bm_author' ORDER BY ORDINAL_POSITION");
+        $result = $query->rows;
+        $columns = array();
+        foreach($result as $column){
+            $columns[] = $column['COLUMN_NAME'];
+        }
+
+        if(!in_array('custom', $columns)){
+            $this->db->query("ALTER TABLE " . DB_PREFIX . "bm_author ADD custom INT( 1 ) DEFAULT 0");
+        }
+
+        if(!in_array('setting', $columns)){
+            $this->db->query("ALTER TABLE " . DB_PREFIX . "bm_author ADD setting TEXT NOT NULL");
+        }
+
+        $query = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".DB_DATABASE."' AND TABLE_NAME = '" . DB_PREFIX . "bm_category' ORDER BY ORDINAL_POSITION");
+        $result = $query->rows;
+        $columns = array();
+        foreach($result as $column){
+            $columns[] = $column['COLUMN_NAME'];
+        }
+
+        if(!in_array('custom', $columns)){
+            $this->db->query("ALTER TABLE " . DB_PREFIX . "bm_category ADD custom INT( 1 ) DEFAULT 0");
+        }
+
+        if(!in_array('setting', $columns)){
+            $this->db->query("ALTER TABLE " . DB_PREFIX . "bm_category ADD setting TEXT NOT NULL");
+        }
+
+    }
+
+    public function createTables() {
+
         $this->db->query("CREATE TABLE IF NOT EXISTS " . DB_PREFIX . "bm_post (
             post_id INT(11) NOT NULL AUTO_INCREMENT,
             user_id INT(11) NOT NULL,
@@ -204,6 +254,8 @@ class ModelExtensionModuleDBlogModule extends Model {
             images_review INT(1) DEFAULT 0,
             viewed INT(11) DEFAULT 1,
             status INT(1) DEFAULT 1,
+            custom INT(1) DEFAULT 0,
+            setting TEXT NOT NULL,
             date_added DATETIME NOT NULL,
             date_published DATETIME NOT NULL,
             date_modified DATETIME NOT NULL,
@@ -243,6 +295,8 @@ class ModelExtensionModuleDBlogModule extends Model {
             author_id int(11) NOT NULL AUTO_INCREMENT,
             user_id int(11) NOT NULL,
             author_group_id int(11) NOT NULL,
+            custom INT(1) DEFAULT 0,
+            setting TEXT NOT NULL,
             PRIMARY KEY (author_id)
         )
         COLLATE='utf8_general_ci'
@@ -275,6 +329,8 @@ class ModelExtensionModuleDBlogModule extends Model {
             sort_order INT(3) NOT NULL,
             image VARCHAR(255) DEFAULT NULL,
             status INT(1) DEFAULT 1,
+            custom INT(1) DEFAULT 0,
+            setting TEXT NOT NULL,
             date_added DATETIME NOT NULL,
             date_modified DATETIME NOT NULL,
             PRIMARY KEY (category_id)

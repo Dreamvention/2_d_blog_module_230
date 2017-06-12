@@ -1,6 +1,7 @@
 <?php
 // Heading
 $_['heading_title']             = 'Blog Categories';
+$_['tab_setting']               = 'Settings';
 
 // Text
 $_['text_success']              = 'Success: You have modified categories!';
@@ -11,6 +12,8 @@ $_['text_default']              = 'Default';
 $_['text_enabled']              = 'Enabled';
 $_['text_disabled']             = 'Disabled';
 $_['text_blog_module']          = 'Blog module';
+$_['text_width']                = 'Width';
+$_['text_height']               = 'Height';
 
 // Column
 $_['column_name']               = 'Category Name';
@@ -34,11 +37,25 @@ $_['entry_sort_order']          = 'Sort Order';
 $_['entry_status']              = 'Status';
 $_['entry_layout']              = 'Layout Override';
 
+//entry
+$_['entry_category_custom']                     = 'Customise this category settings';
+$_['entry_category_image_display']              = 'Show main category image';
+$_['entry_category_layout']                     = 'Grid layout';
+$_['entry_category_layout_type']                = 'Layout type';
+$_['entry_category_post_page_limit']            = 'Post page limit';
+$_['entry_category_image_size']                 = 'Image size';
+$_['entry_category_sub_category_display']       = 'Display sub category';
+$_['entry_category_sub_category_col']           = 'Set columns for sub category';
+$_['entry_category_sub_category_image']         = 'Display sub category image';
+$_['entry_category_sub_category_post_count']    = 'Display sub category post count';
+$_['entry_category_sub_category_image_size']    = 'Sub category image size';
+
 // Help
 $_['help_filter']               = '(Autocomplete)';
 $_['help_keyword']              = 'Do not use spaces, instead replace spaces with - and make sure the keyword is globally unique.';
 $_['help_top']                  = 'Display in the top menu bar. Only works for the top parent categories.';
 $_['help_column']               = 'Number of columns to use for the bottom 3 categories. Only works for the top parent categories.';
+$_['help_layout']                               = '<h4>What is layout?</h4><p>A layout is a simple way of defining how your posts should be presented on the page. You can set 1 row with 1 column: you will see only one post under another. Dull, wouldn\'t you say?. Lest spice it up. Try setting 1 row - 1 columns, 2 row - 2 columns, 3 row - 3 columns. Make your blog standout.</p>';
 
 // Error
 $_['error_warning']             = 'Warning: Please check the form carefully for errors!';

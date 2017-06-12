@@ -7,6 +7,8 @@ class ModelDBlogModuleCategory extends Model {
             . "bm_category SET parent_id = '" . (int) $data['parent_id']
             . "', sort_order = '" . (int) $data['sort_order']
             . "', status = '" . (int) $data['status']
+            . "', custom = '" . (int) $data['custom']
+            . "', setting = '" . $this->db->escape(json_encode($data['setting']))
             . "', date_modified = NOW(), date_added = NOW()");
 
         $category_id = $this->db->getLastId();
@@ -104,6 +106,8 @@ class ModelDBlogModuleCategory extends Model {
             . "SET parent_id = '" . (int) $data['parent_id'] . "', "
             . "sort_order = '" . (int) $data['sort_order'] . "', "
             . "status = '" . (int) $data['status'] . "', "
+            . "custom = '" . (int) $data['custom']. "', "
+            . "setting = '" . $this->db->escape(json_encode($data['setting'])). "', "
             . "date_modified = NOW() WHERE category_id = '" . (int) $category_id . "'");
 
 
@@ -323,7 +327,11 @@ class ModelDBlogModuleCategory extends Model {
         . "' AND cd2.language_id = '" . (int) $this->config->get('config_language_id') . "' ";
 
         $query = $this->db->query($sql);
-        return $query->row;
+        $result = $query->row;
+        if(!empty($result['setting'])){
+            $result['setting'] = json_decode($result['setting'], true);
+        }
+        return $result;
     }
 
     public function getCategories($data = array()) {
@@ -376,7 +384,14 @@ class ModelDBlogModuleCategory extends Model {
 
         $query = $this->db->query($sql);
 
-        return $query->rows;
+        $results = $query->rows;
+        foreach($results as $key => $result){
+            if(!empty($result['setting'])){
+                $results[$key]['setting'] = json_decode($result['setting'], true);
+            }
+        }
+       
+        return $results;
     }
 
     public function getTotalCategories() {
