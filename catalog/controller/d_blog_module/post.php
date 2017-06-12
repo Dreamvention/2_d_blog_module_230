@@ -251,11 +251,19 @@ class ControllerDBlogModulePost extends Controller {
             }
             $data['review'] = $this->load->controller('d_blog_module/review');
 
+            if(isset($this->request->get['format'])){
+                $format = $this->request->get['format'];
+                if($this->format($format, $data)){
+                    return false;
+                }
+            }
+
             //next and prev posts
             $nav_category_id = 0;
             if($this->setting['post']['nav_same_category'] && $parent_category){
                 $nav_category_id = $parent_category['category_id'];
             }
+
             $next_post_info = $this->model_d_blog_module_post->getNextPost($post_id, $nav_category_id);
             $prev_post_info = $this->model_d_blog_module_post->getPrevPost($post_id, $nav_category_id);
 
@@ -324,6 +332,15 @@ class ControllerDBlogModulePost extends Controller {
 
             $this->response->setOutput($this->load->view('error/not_found', $data));
         }
+    }
+
+    public function format($format, $json){
+        if($format == 'json'){
+            $this->response->addHeader('Content-Type: application/json');
+            $this->response->setOutput(json_encode($json));
+            return true;
+        }
+        return false;
     }
 
     public function thumb($post_id) {

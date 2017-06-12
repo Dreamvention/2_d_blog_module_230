@@ -148,6 +148,12 @@ class ControllerDBlogModuleAuthor extends Controller {
                 $data['thumb'] = $this->model_tool_image->resize('placeholder.png', $this->setting['author']['image_width'], $this->setting['author']['image_height']);
             }
 
+            if(isset($this->request->get['format'])){
+                $format = $this->request->get['format'];
+                if($this->format($format, $data)){
+                    return false;
+                }
+            }
 
             if ($this->config->get('config_google_captcha_status')) {
                 $this->document->addScript('https://www.google.com/recaptcha/api.js');
@@ -291,6 +297,15 @@ class ControllerDBlogModuleAuthor extends Controller {
             
             $this->response->setOutput($this->load->view('error/not_found', $data));
         }
+    }
+
+    public function format($format, $json){
+        if($format == 'json'){
+            $this->response->addHeader('Content-Type: application/json');
+            $this->response->setOutput(json_encode($json));
+            return true;
+        }
+        return false;
     }
 
     public function editAuthor() {

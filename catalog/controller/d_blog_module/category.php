@@ -93,6 +93,8 @@ class ControllerDBlogModuleCategory extends Controller
             $category_info['image'] = false;
             $layout = $this->setting['category']['layout'];
         }
+
+
         //edit
         $data['text_edit'] = $this->language->get('text_edit');
         $data['edit'] = false;
@@ -147,6 +149,13 @@ class ControllerDBlogModuleCategory extends Controller
         }
         else {
             $data['thumb'] = '';
+        }
+
+        if(isset($this->request->get['format'])){
+            $format = $this->request->get['format'];
+            if($this->format($format, $data)){
+                return false;
+            }
         }
 
         //categories
@@ -221,6 +230,7 @@ class ControllerDBlogModuleCategory extends Controller
         }
 
 
+
         $data['limits'] = array();
         $limits = array_unique(array($this->setting['category']['post_page_limit'], 25, 50, 75, 100));
         sort($limits);
@@ -280,6 +290,15 @@ class ControllerDBlogModuleCategory extends Controller
 
         $this->response->setOutput($this->load->view('d_blog_module/category', $data));
 
+    }
+
+    public function format($format, $json){
+        if($format == 'json'){
+            $this->response->addHeader('Content-Type: application/json');
+            $this->response->setOutput(json_encode($json));
+            return true;
+        }
+        return false;
     }
 
     public function editCategory(){
