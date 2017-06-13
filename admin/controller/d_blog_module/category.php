@@ -269,6 +269,7 @@ class ControllerDBlogModuleCategory extends Controller {
     }
 
     protected function getForm() {
+        $this->document->addStyle('view/stylesheet/shopunity/bootstrap.css');
         $this->document->addScript('view/javascript/d_bootstrap_switch/js/bootstrap-switch.min.js');
         $this->document->addStyle('view/javascript/d_bootstrap_switch/css/bootstrap-switch.css');
 

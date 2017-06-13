@@ -371,7 +371,7 @@ class ControllerDBlogModulePost extends Controller {
     }
 
     protected function getForm() {
-
+        $this->document->addStyle('view/stylesheet/shopunity/bootstrap.css');
         $this->document->addScript('view/javascript/shopunity/bootstrap-tagsinput/bootstrap-tagsinput.js');
         $this->document->addStyle('view/stylesheet/shopunity/bootstrap-tagsinput/bootstrap-tagsinput.css');
 
