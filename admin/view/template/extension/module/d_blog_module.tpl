@@ -207,6 +207,14 @@
                                 </div><!-- //select -->
 
                                 <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_main_category_all_posts; ?></label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="<?php echo $codename;?>_setting[category][main_category_all_posts]" value="0" />
+                                        <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>"id="input_category_main_category_all_posts" name="<?php echo $codename;?>_setting[category][main_category_all_posts]" <?php echo ($setting['category']['main_category_all_posts']) ? 'checked="checked"':'';?> value="1" />
+                                    </div>
+                                </div><!-- //checkbox -->
+
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input_category_layout_type"><?php echo $entry_category_layout_type; ?></label>
                                     <div class="col-sm-10">
                                         <div class="btn-group colors" data-toggle="buttons">
@@ -219,8 +227,6 @@
                                         </div>
                                     </div>
                                 </div><!-- //status -->
-
-
 
                                 <div class="form-group" id="category_layout">
                                     <label class="col-sm-2 control-label" for="input_category_layout"><?php echo $entry_category_layout; ?></label>
@@ -318,6 +324,14 @@
                                     </div>
                                 </div><!-- //checkbox -->
 
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_sub_category_posts; ?></label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="<?php echo $codename;?>_setting[category][sub_category_posts]" value="0" />
+                                        <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>"id="input_category_sub_category_posts" name="<?php echo $codename;?>_setting[category][sub_category_posts]" <?php echo ($setting['category']['sub_category_posts']) ? 'checked="checked"':'';?> value="1" />
+                                    </div>
+                                </div><!-- //checkbox -->
+
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="input_select"><?php echo $entry_category_sub_category_col; ?></label>
@@ -363,6 +377,8 @@
                                         </div>
                                     </div>
                                 </div><!-- //category_image -->
+
+                                
                             </div>
                         </div>
                         <div class="tab-pane " id="tab_post" >

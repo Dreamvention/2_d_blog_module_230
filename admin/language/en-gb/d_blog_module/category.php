@@ -49,6 +49,7 @@ $_['entry_category_sub_category_col']           = 'Set columns for sub category'
 $_['entry_category_sub_category_image']         = 'Display sub category image';
 $_['entry_category_sub_category_post_count']    = 'Display sub category post count';
 $_['entry_category_sub_category_image_size']    = 'Sub category image size';
+$_['entry_category_sub_category_posts']         = 'Show Sub category posts with current cateogry posts';
 
 // Help
 $_['help_filter']               = '(Autocomplete)';

@@ -9,6 +9,7 @@ $_['d_blog_module_setting'] = array(
 
     'category' => array(
         'main_category_id' => 1,
+        'main_category_all_posts' => 0,
         'layout' => array(0 => 2),
         'layout_type' => 'grid',
         'post_page_limit' => 7,
@@ -21,6 +22,7 @@ $_['d_blog_module_setting'] = array(
         'sub_category_post_count' => 1,
         'sub_category_image_width' => 120,
         'sub_category_image_height' => 75,
+        'sub_category_posts' => 1,
         ),
     'post_thumb' => array(
         'image_width' => 1200,

@@ -214,6 +214,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['entry_category_layout'] = $this->language->get('entry_category_layout');
         $data['entry_category_layout_type'] = $this->language->get('entry_category_layout_type');
         $data['entry_category_main_category_id'] = $this->language->get('entry_category_main_category_id');
+        $data['entry_category_main_category_all_posts'] = $this->language->get('entry_category_main_category_all_posts');
         $data['entry_category_post_page_limit'] = $this->language->get('entry_category_post_page_limit');
         $data['entry_category_image_display'] = $this->language->get('entry_category_image_display');
         $data['entry_category_image_size'] = $this->language->get('entry_category_image_size');
@@ -222,6 +223,7 @@ class ControllerExtensionModuleDBlogModule extends Controller {
         $data['entry_category_sub_category_image'] = $this->language->get('entry_category_sub_category_image');
         $data['entry_category_sub_category_post_count'] = $this->language->get('entry_category_sub_category_post_count');
         $data['entry_category_sub_category_image_size'] = $this->language->get('entry_category_sub_category_image_size');
+        $data['entry_category_sub_category_posts'] = $this->language->get('entry_category_sub_category_posts');
 
         $data['entry_post_image_display'] = $this->language->get('entry_post_image_display');
         $data['entry_post_popup_display'] = $this->language->get('entry_post_popup_display');

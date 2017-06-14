@@ -68,7 +68,12 @@ class ModelDBlogModulePost extends Model {
 // if (!empty($data['filter_sub_category'])) {
 //     $sql .= " AND cp.path_id = '" . (int) $data['filter_category_id'] . "'";
 // } else {
-            $sql .= " AND p2c.category_id = '" . (int) $data['filter_category_id'] . "'";
+            if(is_array($data['filter_category_id'])){
+                $sql .= " AND p2c.category_id IN (" . implode(",", $data['filter_category_id']) . ")";
+            }else{
+                $sql .= " AND p2c.category_id = '" . (int) $data['filter_category_id'] . "'";
+            }
+            
 // }
 
 // if (!empty($data['filter_filter'])) {
@@ -197,7 +202,11 @@ class ModelDBlogModulePost extends Model {
              }
         }
         if (!empty($data['filter_category_id'])) {
-            $sql .= " AND p2c.category_id = '" . (int) $data['filter_category_id'] . "'";
+            if(is_array($data['filter_category_id'])){
+                $sql .= " AND p2c.category_id IN (" . implode(",", $data['filter_category_id']) . ")";
+            }else{
+                $sql .= " AND p2c.category_id = '" . (int) $data['filter_category_id'] . "'";
+            }
         }
 
         if (!empty($data['filter_date_published'])) {

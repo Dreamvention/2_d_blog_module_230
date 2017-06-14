@@ -189,12 +189,21 @@ class ControllerDBlogModuleCategory extends Controller
             }
         }
 
+        if($this->setting['category']['sub_category_posts']){
+            $filter_category_id = array($category_id);
+            foreach($categories as $categorie){
+                $filter_category_id[] = $categorie['category_id'];
+            }
+        }
+
         //posts
         $data['posts'] = array();
-        if($category_id == $this->setting['category']['main_category_id']){
-            $filter_data = array('limit' => $limit, 'start' => ($page - 1) * $limit,);
+        if($category_id == $this->setting['category']['main_category_id'] && $this->setting['category']['main_category_all_posts']){
+            $filter_data = array('limit' => $limit, 'start' => ($page - 1) * $limit);
+        }elseif(isset($filter_category_id)){
+            $filter_data = array('filter_category_id' => $filter_category_id, 'limit' => $limit, 'start' => ($page - 1) * $limit);
         }else{
-            $filter_data = array('filter_category_id' => $category_id, 'limit' => $limit, 'start' => ($page - 1) * $limit,);
+            $filter_data = array('filter_category_id' => $category_id, 'limit' => $limit, 'start' => ($page - 1) * $limit);
         }
         $post_total = $this->model_d_blog_module_post->getTotalPosts($filter_data);
         $posts = $this->model_d_blog_module_post->getPosts($filter_data);

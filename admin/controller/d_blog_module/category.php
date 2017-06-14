@@ -320,6 +320,7 @@ class ControllerDBlogModuleCategory extends Controller {
         $data['entry_category_sub_category_image'] = $this->language->get('entry_category_sub_category_image');
         $data['entry_category_sub_category_post_count'] = $this->language->get('entry_category_sub_category_post_count');
         $data['entry_category_sub_category_image_size'] = $this->language->get('entry_category_sub_category_image_size');
+        $data['entry_category_sub_category_posts'] = $this->language->get('entry_category_sub_category_posts');
 
         $data['help_layout'] = $this->language->get( 'help_layout' );
         $data['help_category'] = $this->language->get('help_category');

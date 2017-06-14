@@ -271,6 +271,13 @@
                             </div>
                         </div><!-- //checkbox -->
 
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input_checkbox"><?php echo $entry_category_sub_category_posts; ?></label>
+                            <div class="col-sm-10">
+                                <input type="hidden" name="setting[sub_category_posts]" value="0" />
+                                <input type="checkbox" class="switcher" data-label-text="<?php echo $text_enabled; ?>" id="input_category_sub_category_display" name="setting[sub_category_posts]" <?php echo ($setting['sub_category_posts']) ? 'checked="checked"':'';?> value="1" />
+                            </div>
+                        </div><!-- //checkbox -->
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="input_select"><?php echo $entry_category_sub_category_col; ?></label>

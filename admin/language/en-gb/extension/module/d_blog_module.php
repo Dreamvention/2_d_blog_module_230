@@ -53,7 +53,9 @@ $_['entry_upload']                              = 'Upload File';
 //entry
 $_['entry_status']                              = 'Status';
 $_['entry_theme']                               = 'Theme';
+
 $_['entry_category_main_category_id']           = 'Home category';
+$_['entry_category_main_category_all_posts']    = 'Show all posts under the main category';
 $_['entry_category_image_display']              = 'Show main category image';
 $_['entry_category_layout']                     = 'Grid layout';
 $_['entry_category_layout_type']                = 'Layout type';
@@ -64,6 +66,7 @@ $_['entry_category_sub_category_col']           = 'Set columns for sub category'
 $_['entry_category_sub_category_image']         = 'Display sub category image';
 $_['entry_category_sub_category_post_count']    = 'Display sub category post count';
 $_['entry_category_sub_category_image_size']    = 'Sub category image size';
+$_['entry_category_sub_category_posts']         = 'Show Sub category posts with current cateogry posts';
 
 $_['entry_post_image_display']                  = 'Display main image';
 $_['entry_post_popup_display']                  = 'Display main image popup';
