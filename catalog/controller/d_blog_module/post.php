@@ -71,10 +71,14 @@ class ControllerDBlogModulePost extends Controller {
             $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
             $styles = array(
-                'd_blog_module/d_blog_module.css',
-                'd_blog_module/bootstrap.css',
-                'd_blog_module/theme/'.$this->setting['theme'].'.css'
+                'd_blog_module/d_blog_module.css'
             );
+
+            if($this->setting['design']['bootstrap']){
+                $styles[] = 'd_blog_module/bootstrap.css';
+            }
+
+            $styles[] = 'd_blog_module/theme/'.$this->setting['theme'].'.css';
 
             foreach($styles as $style){
                 if (file_exists(DIR_TEMPLATE . $this->theme . '/stylesheet/'.$style)) {

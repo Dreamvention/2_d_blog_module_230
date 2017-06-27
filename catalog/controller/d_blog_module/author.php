@@ -43,8 +43,11 @@ class ControllerDBlogModuleAuthor extends Controller {
 
         $styles = array(
             'd_blog_module/d_blog_module.css',
-            'd_blog_module/bootstrap.css',
         );
+
+        if($this->setting['design']['bootstrap']){
+            $styles[] = 'd_blog_module/bootstrap.css';
+        }
 
         $scripts = array(
             'd_blog_module/author.js'

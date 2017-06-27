@@ -1,6 +1,6 @@
 {
     "codename": "d_blog_module",
-    "version": "2.2.6",
+    "version": "2.2.7",
     "name": "Blog module",
     "description": "A blog module based on twig and events. Huge functionality packed in one great solution.",
     "index": "extension/module/d_blog_module",
@@ -107,6 +107,10 @@
         "image/catalog/d_blog_module/post"
     ],
     "changelog": [
+        {
+            "version":"2.2.7",
+            "change": "1. Hotfix: Layout id"
+        },
         {
             "version":"2.2.6",
             "change": "1. hotfix: layout id"

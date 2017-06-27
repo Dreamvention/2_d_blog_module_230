@@ -83,7 +83,7 @@ class ControllerEventDBlogModule extends Controller {
         if(isset($this->request->get['category_id'])){
             $category_id = $this->request->get['category_id'];
 
-            $this->load->model('d_blog_module/post');
+            $this->load->model('d_blog_module/category');
             $layout_id = $this->model_d_blog_module_category->getCategoryLayoutId($category_id);
             if($layout_id){
                 $output = $layout_id;

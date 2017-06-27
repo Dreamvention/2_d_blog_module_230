@@ -53,7 +53,7 @@ class ModelDBlogModulePost extends Model {
             foreach ($data['post_product'] as $product_id) {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "bm_post_to_product
                     SET post_id = '" . (int) $post_id . "',
-                    product_id = '" . (int) $product_id['product_id'] . "'");
+                    product_id = '" . (int) $product_id . "'");
             }
         }
 
@@ -61,7 +61,7 @@ class ModelDBlogModulePost extends Model {
             foreach ($data['related_post'] as $post_related_id) {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "bm_post_related
                     SET post_id = '" . (int) $post_id . "',
-                    post_related_id = '" . (int) $post_related_id['post_id'] . "'");
+                    post_related_id = '" . (int) $post_related_id . "'");
             }
         }
 

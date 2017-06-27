@@ -41,9 +41,12 @@ class ControllerDBlogModuleCategory extends Controller
         }
 
         $styles = array(
-            'd_blog_module/d_blog_module.css',
-            'd_blog_module/bootstrap.css',
+            'd_blog_module/d_blog_module.css'
         );
+
+        if($this->setting['design']['bootstrap']){
+            $styles[] = 'd_blog_module/bootstrap.css';
+        }
 
         $scripts = array(
             'd_blog_module/category.js'
@@ -55,13 +58,7 @@ class ControllerDBlogModuleCategory extends Controller
         else {
             $page = 1;
         }
-        if (isset($this->request->get['limit'])) {
-            $limit = $this->request->get['limit'];
-        }
-        else {
-            $limit = $this->setting['category']['post_page_limit'];
-        }
-
+        
         if (!empty($this->request->get['category_id'])) {
             $category_id = $this->request->get['category_id'];
         }
@@ -82,6 +79,14 @@ class ControllerDBlogModuleCategory extends Controller
         }
 
         $data['setting'] = $this->setting;
+
+        if (isset($this->request->get['limit'])) {
+            $limit = $this->request->get['limit'];
+        }
+        else {
+            $limit = $this->setting['category']['post_page_limit'];
+        }
+
         //category
         $parents = array();
         if ($category_info) {

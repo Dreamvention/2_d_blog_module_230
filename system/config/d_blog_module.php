@@ -102,7 +102,8 @@ $_['d_blog_module_setting'] = array(
         ),
     'design' => array(
         'custom_style' => '', 
-        'ssl_url' => ''
+        'ssl_url' => '',
+        'bootstrap' => 1,
     )
         //'support' => 1,
 );
